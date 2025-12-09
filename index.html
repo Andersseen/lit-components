@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lit UI MVP Demo</title>
+    <script type="module" src="./src/index.ts"></script>
+    <link rel="stylesheet" href="./src/globals.css" />
+  </head>
+  <body class="bg-gray-50 p-10 font-sans text-gray-900">
+    <div class="max-w-4xl mx-auto space-y-12">
+      <div class="border-b pb-4">
+        <h1 class="text-3xl font-bold">Lit UI Component Library</h1>
+        <p class="text-gray-500 mt-2">Built with Lit, Tailwind v4, and CVA.</p>
+      </div>
+
+      <!-- Sizes -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+          Sizes
+        </h2>
+        <div
+          class="flex items-end gap-4 p-6 bg-white rounded-lg shadow-sm border border-gray-100"
+        >
+          <ui-button size="sm">Small</ui-button>
+          <ui-button size="md">Medium</ui-button>
+          <ui-button size="lg">Large</ui-button>
+        </div>
+      </section>
+
+      <!-- Variants -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+          Variants
+        </h2>
+        <div
+          class="grid grid-cols-2 lg:grid-cols-4 gap-6 p-6 bg-white rounded-lg shadow-sm border border-gray-100"
+        >
+          <!-- Primary -->
+          <div class="space-y-2">
+            <p class="text-xs text-gray-400 font-medium uppercase">Primary</p>
+            <ui-button variant="primary">Primary</ui-button>
+          </div>
+
+          <!-- Secondary -->
+          <div class="space-y-2">
+            <p class="text-xs text-gray-400 font-medium uppercase">Secondary</p>
+            <ui-button variant="secondary">Secondary</ui-button>
+          </div>
+
+          <!-- Success -->
+          <div class="space-y-2">
+            <p class="text-xs text-gray-400 font-medium uppercase">Success</p>
+            <ui-button variant="success">Success</ui-button>
+          </div>
+
+          <!-- Error -->
+          <div class="space-y-2">
+            <p class="text-xs text-gray-400 font-medium uppercase">Error</p>
+            <ui-button variant="error">Error</ui-button>
+          </div>
+
+          <!-- Warning -->
+          <div class="space-y-2">
+            <p class="text-xs text-gray-400 font-medium uppercase">Warning</p>
+            <ui-button variant="warning">Warning</ui-button>
+          </div>
+
+          <!-- Info -->
+          <div class="space-y-2">
+            <p class="text-xs text-gray-400 font-medium uppercase">Info</p>
+            <ui-button variant="info">Info</ui-button>
+          </div>
+
+          <!-- Outline -->
+          <div class="space-y-2">
+            <p class="text-xs text-gray-400 font-medium uppercase">Outline</p>
+            <ui-button variant="outline">Outline</ui-button>
+          </div>
+
+          <!-- Ghost -->
+          <div class="space-y-2">
+            <p class="text-xs text-gray-400 font-medium uppercase">Ghost</p>
+            <ui-button variant="ghost">Ghost</ui-button>
+          </div>
+        </div>
+      </section>
+
+      <!-- States -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+          States
+        </h2>
+        <div
+          class="flex items-center gap-4 p-6 bg-white rounded-lg shadow-sm border border-gray-100"
+        >
+          <ui-button disabled>Disabled</ui-button>
+          <ui-button variant="outline" disabled>Disabled Outline</ui-button>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
