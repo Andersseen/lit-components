@@ -1,1 +1,55 @@
 @import "tailwindcss";
+
+/* Global reset for shadow DOM */
+:host,
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* UiNavbar specific host */
+:host(ui-navbar) {
+  display: block;
+  width: 100%;
+}
+
+/* Nav internal styles - rendered inside UiNavbar shadow root */
+nav {
+  /* flex h-14 items-center gap-4 border-b border-slate-200 bg-white px-6 shadow-sm */
+  display: flex;
+  height: 3.5rem;
+  align-items: center;
+  gap: 1rem;
+  border-bottom-width: 1px;
+  border-color: #e2e8f0;
+  background-color: white;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+:host(ui-navbar-brand) {
+  /* mr-4 hidden md:flex font-bold text-lg text-slate-900 */
+  margin-right: 1rem;
+  display: flex; /* Default flex, hide on small via media query if needed, but let's stick to flex */
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  color: #0f172a;
+}
+
+@media (max-width: 768px) {
+  :host(ui-navbar-brand) {
+    display: none;
+  }
+}
+
+:host(ui-navbar-content) {
+  /* flex flex-1 items-center justify-end gap-2 */
+  display: flex;
+  flex: 1 1 0%;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}

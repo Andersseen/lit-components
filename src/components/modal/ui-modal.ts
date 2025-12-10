@@ -1,6 +1,7 @@
 import { LitElement, html, unsafeCSS } from "lit";
 import { customElement, property, query } from "lit/decorators.js";
 import { cn } from "../../utils";
+import { modalVariants } from "./modal.variants";
 import tailwindStyles from "./modal.css?inline";
 
 const styles = unsafeCSS(tailwindStyles);
@@ -24,6 +25,7 @@ export class UiModal extends LitElement {
 
   private handleClose() {
     this.open = false;
+    this.dialog.close(); // Force native close to be sure
     this.dispatchEvent(new Event("close"));
   }
 
@@ -36,9 +38,7 @@ export class UiModal extends LitElement {
   render() {
     return html`
       <dialog
-        class="${cn(
-          "backdrop:bg-black/50 backdrop:backdrop-blur-sm fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-slate-200 bg-white p-6 shadow-lg duration-200 rounded-lg sm:rounded-lg"
-        )}"
+        class="${cn(modalVariants())}"
         @click=${this.handleBackdropClick}
         @close=${this.handleClose}
       >
@@ -66,59 +66,5 @@ export class UiModal extends LitElement {
         </button>
       </dialog>
     `;
-  }
-}
-
-@customElement("ui-modal-header")
-export class UiModalHeader extends LitElement {
-  static styles = [styles];
-
-  render() {
-    return html`
-      <div
-        class="${cn("flex flex-col space-y-1.5 text-center sm:text-left mb-4")}"
-      >
-        <slot></slot>
-      </div>
-    `;
-  }
-}
-
-@customElement("ui-modal-title")
-export class UiModalTitle extends LitElement {
-  static styles = [styles];
-
-  render() {
-    return html`
-      <h2 class="${cn("text-lg font-semibold leading-none tracking-tight")}">
-        <slot></slot>
-      </h2>
-    `;
-  }
-}
-
-@customElement("ui-modal-footer")
-export class UiModalFooter extends LitElement {
-  static styles = [styles];
-
-  render() {
-    return html`
-      <div
-        class="${cn(
-          "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 mt-4"
-        )}"
-      >
-        <slot></slot>
-      </div>
-    `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    "ui-modal": UiModal;
-    "ui-modal-header": UiModalHeader;
-    "ui-modal-title": UiModalTitle;
-    "ui-modal-footer": UiModalFooter;
   }
 }

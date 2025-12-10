@@ -1,20 +1,20 @@
 import { LitElement, html, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { cn } from "../../utils";
-import { navbarVariants } from "./navbar.variants";
-import tailwindStyles from "./navbar.css?inline";
+import { modalHeaderVariants } from "./modal.variants";
+import tailwindStyles from "./modal.css?inline";
 
 const styles = unsafeCSS(tailwindStyles);
 
-@customElement("ui-navbar")
-export class UiNavbar extends LitElement {
+@customElement("ui-modal-header")
+export class UiModalHeader extends LitElement {
   static styles = [styles];
 
   render() {
     return html`
-      <nav class="${cn(navbarVariants())}">
+      <div class="${cn(modalHeaderVariants())}">
         <slot></slot>
-      </nav>
+      </div>
     `;
   }
 }

@@ -1,12 +1,9 @@
 import { LitElement, html, unsafeCSS } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
-import { cn } from "../../utils";
+import { UiAccordionItem } from "./ui-accordion-item";
 import tailwindStyles from "./accordion.css?inline";
 
 const styles = unsafeCSS(tailwindStyles);
-
-// Minimal Event Bus for Accordion communication (or just use DOM events)
-// Since we are using standard DOM events, we can just bubble up.
 
 @customElement("ui-accordion")
 export class UiAccordion extends LitElement {
@@ -56,117 +53,5 @@ export class UiAccordion extends LitElement {
 
   render() {
     return html`<slot></slot>`;
-  }
-}
-
-@customElement("ui-accordion-item")
-export class UiAccordionItem extends LitElement {
-  static styles = [styles];
-
-  @property() value: string = "";
-  @property({ type: Boolean, reflect: true }) open = false;
-
-  render() {
-    return html`
-      <div class="border-b border-slate-200">
-        <slot></slot>
-      </div>
-    `;
-  }
-}
-
-@customElement("ui-accordion-trigger")
-export class UiAccordionTrigger extends LitElement {
-  static styles = [styles];
-
-  private handleClick() {
-    // Find closest item value
-    const item = this.closest("ui-accordion-item");
-    if (item && item instanceof UiAccordionItem) {
-      this.dispatchEvent(
-        new CustomEvent("accordion-trigger", {
-          bubbles: true,
-          composed: true,
-          detail: { value: item.value },
-        })
-      );
-    }
-  }
-
-  render() {
-    // Check if parent item is open to rotate icon
-    const item = this.closest("ui-accordion-item") as UiAccordionItem;
-    const isOpen = item?.open || false;
-    const value = item?.value || "default";
-    const contentId = `accordion-content-${value}`;
-    const triggerId = `accordion-trigger-${value}`;
-
-    return html`
-      <button
-        id="${triggerId}"
-        type="button"
-        class="${cn(
-          "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline text-slate-900 w-full bg-transparent border-0 cursor-pointer"
-        )}"
-        @click=${this.handleClick}
-        aria-expanded="${isOpen}"
-        aria-controls="${contentId}"
-      >
-        <slot></slot>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="h-4 w-4 shrink-0 transition-transform duration-200 ${isOpen
-            ? "rotate-180"
-            : ""}"
-        >
-          <path d="m6 9 6 6 6-6" />
-        </svg>
-      </button>
-    `;
-  }
-}
-
-@customElement("ui-accordion-content")
-export class UiAccordionContent extends LitElement {
-  static styles = [styles];
-
-  render() {
-    const item = this.closest("ui-accordion-item") as UiAccordionItem;
-    const isOpen = item?.open || false;
-    const value = item?.value || "default";
-    const contentId = `accordion-content-${value}`;
-    const triggerId = `accordion-trigger-${value}`;
-
-    return html`
-      <div
-        id="${contentId}"
-        role="region"
-        aria-labelledby="${triggerId}"
-        class="overflow-hidden text-sm transition-all ${isOpen
-          ? "animate-accordion-down"
-          : "animate-accordion-up"} ${isOpen ? "block" : "hidden"}"
-      >
-        <div class="pb-4 pt-0 text-slate-700">
-          <slot></slot>
-        </div>
-      </div>
-    `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    "ui-accordion": UiAccordion;
-    "ui-accordion-item": UiAccordionItem;
-    "ui-accordion-trigger": UiAccordionTrigger;
-    "ui-accordion-content": UiAccordionContent;
   }
 }

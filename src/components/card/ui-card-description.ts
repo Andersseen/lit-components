@@ -1,20 +1,19 @@
 import { LitElement, html, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { cn } from "../../utils";
-import { navbarVariants } from "./navbar.variants";
-import tailwindStyles from "./navbar.css?inline";
+import tailwindStyles from "./card.css?inline";
 
 const styles = unsafeCSS(tailwindStyles);
 
-@customElement("ui-navbar")
-export class UiNavbar extends LitElement {
+@customElement("ui-card-description")
+export class UiCardDescription extends LitElement {
   static styles = [styles];
 
   render() {
     return html`
-      <nav class="${cn(navbarVariants())}">
+      <p class="${cn("text-sm text-slate-500")}">
         <slot></slot>
-      </nav>
+      </p>
     `;
   }
 }

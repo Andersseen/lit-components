@@ -20,37 +20,3 @@ export class UiAlert extends LitElement {
     `;
   }
 }
-
-@customElement("ui-alert-title")
-export class UiAlertTitle extends LitElement {
-  static styles = [styles];
-
-  render() {
-    return html`
-      <h5 class="mb-1 font-medium leading-none tracking-tight">
-        <slot></slot>
-      </h5>
-    `;
-  }
-}
-
-@customElement("ui-alert-description")
-export class UiAlertDescription extends LitElement {
-  static styles = [styles];
-
-  render() {
-    return html`
-      <div class="text-sm [&_p]:leading-relaxed">
-        <slot></slot>
-      </div>
-    `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    "ui-alert": UiAlert;
-    "ui-alert-title": UiAlertTitle;
-    "ui-alert-description": UiAlertDescription;
-  }
-}

@@ -1,1 +1,37 @@
 @import "tailwindcss";
+
+:host {
+  display: block;
+}
+
+:host(ui-accordion) {
+  width: 100%;
+}
+
+:host(ui-accordion-item) {
+  display: block;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+:host(ui-accordion-trigger) {
+  display: block;
+}
+
+:host(ui-accordion-content) {
+  display: block;
+}
+/* We need to handle the hidden state via host class or attribute because 
+   the internal div hidden class might not close the host container's height?
+   Actually if host is block, it wraps content. If content is hidden, host collapses.
+   But we should ensure smooth animation.
+*/
+
+button {
+  /* Reset button styles */
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 0;
+  cursor: pointer;
+}
