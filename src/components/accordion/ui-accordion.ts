@@ -1,4 +1,4 @@
-import { LitElement, html, unsafeCSS, nothing } from "lit";
+import { LitElement, html, unsafeCSS } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { cn } from "../../utils";
 import tailwindStyles from "./accordion.css?inline";
@@ -97,13 +97,20 @@ export class UiAccordionTrigger extends LitElement {
     // Check if parent item is open to rotate icon
     const item = this.closest("ui-accordion-item") as UiAccordionItem;
     const isOpen = item?.open || false;
+    const value = item?.value || "default";
+    const contentId = `accordion-content-${value}`;
+    const triggerId = `accordion-trigger-${value}`;
 
     return html`
       <button
+        id="${triggerId}"
+        type="button"
         class="${cn(
           "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline text-slate-900 w-full bg-transparent border-0 cursor-pointer"
         )}"
         @click=${this.handleClick}
+        aria-expanded="${isOpen}"
+        aria-controls="${contentId}"
       >
         <slot></slot>
         <svg
@@ -134,9 +141,15 @@ export class UiAccordionContent extends LitElement {
   render() {
     const item = this.closest("ui-accordion-item") as UiAccordionItem;
     const isOpen = item?.open || false;
+    const value = item?.value || "default";
+    const contentId = `accordion-content-${value}`;
+    const triggerId = `accordion-trigger-${value}`;
 
     return html`
       <div
+        id="${contentId}"
+        role="region"
+        aria-labelledby="${triggerId}"
         class="overflow-hidden text-sm transition-all ${isOpen
           ? "animate-accordion-down"
           : "animate-accordion-up"} ${isOpen ? "block" : "hidden"}"

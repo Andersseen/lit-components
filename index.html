@@ -250,6 +250,129 @@
           });
         </script>
       </section>
+      <!-- Tabs -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+          Tabs
+        </h2>
+        <ui-tabs default-value="account" class="w-[400px]">
+          <ui-tabs-list class="grid w-full grid-cols-2">
+            <ui-tabs-trigger value="account">Account</ui-tabs-trigger>
+            <ui-tabs-trigger value="password">Password</ui-tabs-trigger>
+          </ui-tabs-list>
+          <ui-tabs-content value="account">
+            <ui-card>
+              <ui-card-header>
+                <ui-card-title>Account</ui-card-title>
+                <ui-card-description>
+                  Make changes to your account here. Click save when you're done.
+                </ui-card-description>
+              </ui-card-header>
+              <ui-card-content class="space-y-2">
+                <div class="space-y-1">
+                  <label for="name">Name</label>
+                  <input
+                    id="name"
+                    value="Pedro Duarte"
+                    class="flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  />
+                </div>
+              </ui-card-content>
+              <ui-card-footer>
+                <ui-button>Save changes</ui-button>
+              </ui-card-footer>
+            </ui-card>
+          </ui-tabs-content>
+          <ui-tabs-content value="password">
+            <ui-card>
+              <ui-card-header>
+                <ui-card-title>Password</ui-card-title>
+                <ui-card-description>
+                  Change your password here. After saving, you'll be logged out.
+                </ui-card-description>
+              </ui-card-header>
+              <ui-card-content class="space-y-2">
+                <div class="space-y-1">
+                  <label for="current">Current password</label>
+                  <input
+                    id="current"
+                    type="password"
+                    class="flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  />
+                </div>
+                <div class="space-y-1">
+                  <label for="new">New password</label>
+                  <input
+                    id="new"
+                    type="password"
+                    class="flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  />
+                </div>
+              </ui-card-content>
+              <ui-card-footer>
+                <ui-button>Save password</ui-button>
+              </ui-card-footer>
+            </ui-card>
+          </ui-tabs-content>
+        </ui-tabs>
+      </section>
+
+      <!-- Tooltip -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+          Tooltip
+        </h2>
+        <ui-tooltip>
+          <ui-tooltip-trigger>
+            <ui-button variant="outline">Hover me</ui-button>
+          </ui-tooltip-trigger>
+          <ui-tooltip-content>
+            <p>Add to library</p>
+          </ui-tooltip-content>
+        </ui-tooltip>
+      </section>
+
+      <!-- Sheet (Sidebar) -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+          Sheet (Sidebar)
+        </h2>
+        <ui-sheet>
+          <ui-sheet-trigger>
+            <ui-button variant="outline">Open Sheet</ui-button>
+          </ui-sheet-trigger>
+          <ui-sheet-overlay></ui-sheet-overlay>
+          <ui-sheet-content side="right">
+            <div class="space-y-4">
+               <h2 class="text-lg font-semibold">Sidebar Menu</h2>
+               <p class="text-sm text-slate-500">
+                  This content slides in from the right.
+               </p>
+               <div class="grid gap-4 py-4">
+                 <ui-button variant="ghost" class="justify-start">Home</ui-button>
+                 <ui-button variant="ghost" class="justify-start">Settings</ui-button>
+                 <ui-button variant="ghost" class="justify-start">Profile</ui-button>
+               </div>
+               <ui-sheet-footer>
+                  <ui-button class="w-full">Logout</ui-button>
+               </ui-sheet-footer>
+            </div>
+          </ui-sheet-content>
+        </ui-sheet>
+      </section>
+
+      <!-- Toast -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+          Toast
+        </h2>
+        <ui-button
+          variant="outline"
+          onclick="window.dispatchEvent(new CustomEvent('show-toast', { detail: { title: 'Scheduled: Catch up', description: 'Friday, February 10, 2023 at 5:57 PM', duration: 5000 } }))"
+        >
+          Add to calendar
+        </ui-button>
+      </section>
     </div>
-  </body>
+    <ui-toaster></ui-toaster>
 </html>

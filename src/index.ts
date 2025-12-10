@@ -4,4 +4,8 @@ export * from "./components/alert/ui-alert";
 export * from "./components/accordion/ui-accordion";
 export * from "./components/navbar/ui-navbar";
 export * from "./components/modal/ui-modal";
+export * from "./components/tabs/ui-tabs";
+export * from "./components/tooltip/ui-tooltip";
+export * from "./components/sheet/ui-sheet";
+export * from "./components/toast/ui-toast";
 export * from "./utils";

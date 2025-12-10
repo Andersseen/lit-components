@@ -14,9 +14,9 @@ export class UiModal extends LitElement {
 
   updated(changedProperties: Map<string, any>) {
     if (changedProperties.has("open")) {
-      if (this.open) {
+      if (this.open && !this.dialog.open) {
         this.dialog.showModal();
-      } else {
+      } else if (!this.open && this.dialog.open) {
         this.dialog.close();
       }
     }
