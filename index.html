@@ -322,14 +322,102 @@
         <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
           Tooltip
         </h2>
-        <ui-tooltip>
-          <ui-tooltip-trigger>
-            <ui-button variant="outline">Hover me</ui-button>
-          </ui-tooltip-trigger>
-          <ui-tooltip-content>
-            <p>Add to library</p>
-          </ui-tooltip-content>
-        </ui-tooltip>
+        <div class="flex flex-wrap gap-4 mt-10 ml-10">
+          <ui-tooltip side="top">
+            <ui-tooltip-trigger>
+              <ui-button variant="outline">Top</ui-button>
+            </ui-tooltip-trigger>
+            <ui-tooltip-content>Tooltip Top</ui-tooltip-content>
+          </ui-tooltip>
+
+          <ui-tooltip side="bottom">
+            <ui-tooltip-trigger>
+              <ui-button variant="outline">Bottom</ui-button>
+            </ui-tooltip-trigger>
+            <ui-tooltip-content>Tooltip Bottom</ui-tooltip-content>
+          </ui-tooltip>
+
+          <ui-tooltip side="left">
+            <ui-tooltip-trigger>
+              <ui-button variant="outline">Left</ui-button>
+            </ui-tooltip-trigger>
+            <ui-tooltip-content>Tooltip Left</ui-tooltip-content>
+          </ui-tooltip>
+
+          <ui-tooltip side="right">
+            <ui-tooltip-trigger>
+              <ui-button variant="outline">Right</ui-button>
+            </ui-tooltip-trigger>
+            <ui-tooltip-content>Tooltip Right</ui-tooltip-content>
+          </ui-tooltip>
+        </div>
+      </section>
+
+      <!-- Dropdown -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+          Dropdown Menu
+        </h2>
+        <ui-dropdown>
+          <ui-dropdown-trigger>
+             <ui-button variant="outline">Open Menu</ui-button>
+          </ui-dropdown-trigger>
+          <ui-dropdown-content>
+              <ui-dropdown-item>Profile</ui-dropdown-item>
+              <ui-dropdown-item>Billing</ui-dropdown-item>
+              <ui-dropdown-item>Team</ui-dropdown-item>
+              <ui-dropdown-item>Subscription</ui-dropdown-item>
+          </ui-dropdown-content>
+        </ui-dropdown>
+      </section>
+
+      <!-- Breadcrumb -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+          Breadcrumb
+        </h2>
+        <ui-breadcrumb>
+            <ui-breadcrumb-item href="#">Home</ui-breadcrumb-item>
+            <ui-breadcrumb-separator></ui-breadcrumb-separator>
+            <ui-breadcrumb-item href="#">Components</ui-breadcrumb-item>
+            <ui-breadcrumb-separator></ui-breadcrumb-separator>
+            <ui-breadcrumb-item active>Breadcrumb</ui-breadcrumb-item>
+        </ui-breadcrumb>
+      </section>
+
+      <!-- Menu List -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+          Menu List
+        </h2>
+        <div class="w-64">
+            <ui-menu>
+                <ui-menu-label>My Account</ui-menu-label>
+                <ui-menu-separator></ui-menu-separator>
+                <ui-menu-item>Profile</ui-menu-item>
+                <ui-menu-item>Billing</ui-menu-item>
+                <ui-menu-item>Settings</ui-menu-item>
+                <ui-menu-separator></ui-menu-separator>
+                <ui-menu-item disabled>Admin Panel</ui-menu-item>
+            </ui-menu>
+        </div>
+      </section>
+
+      <!-- Pagination -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+          Pagination
+        </h2>
+        <ui-pagination>
+            <ui-pagination-content>
+                <ui-pagination-previous href="#"></ui-pagination-previous>
+                <ui-pagination-link href="#" isActive>1</ui-pagination-link>
+                <ui-pagination-link href="#">2</ui-pagination-link>
+                <ui-pagination-link href="#">3</ui-pagination-link>
+                <ui-pagination-ellipsis></ui-pagination-ellipsis>
+                <ui-pagination-next href="#"></ui-pagination-next>
+            </ui-pagination-content>
+        </ui-pagination>
       </section>
 
       <!-- Sheet (Sidebar) -->
