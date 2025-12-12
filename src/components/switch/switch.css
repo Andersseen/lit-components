@@ -1,8 +1,14 @@
 @import "tailwindcss";
 
-@layer components {
-  :host {
-    display: inline-flex;
-    vertical-align: middle;
-  }
+:host {
+  display: inline-flex;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+/* Estado deshabilitado a nivel de host */
+:host([disabled]) {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
 }
