@@ -236,50 +236,24 @@
           </h2>
           <div class="space-y-4">
             <ui-alert>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="h-4 w-4"
-              >
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                <path
-                  d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
-                />
-              </svg>
               <ui-alert-title>Heads up!</ui-alert-title>
-              <ui-alert-description>
-                You can add components to your app using the cli.
-              </ui-alert-description>
+              <ui-alert-description
+                >You can add components using the CLI.</ui-alert-description
+              >
             </ui-alert>
 
             <ui-alert variant="destructive">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="h-4 w-4"
+              <ui-alert-title>Error crítico</ui-alert-title>
+              <ui-alert-description
+                >Tu sesión ha expirado.</ui-alert-description
               >
-                <circle cx="12" cy="12" r="10" />
-                <path d="m15 9-6 6" />
-                <path d="m9 9 6 6" />
-              </svg>
-              <ui-alert-title>Error</ui-alert-title>
-              <ui-alert-description>
-                Your session has expired. Please log in again.
-              </ui-alert-description>
+            </ui-alert>
+
+            <ui-alert variant="success">
+              <ui-alert-title>Completado</ui-alert-title>
+              <ui-alert-description
+                >Archivo subido correctamente.</ui-alert-description
+              >
             </ui-alert>
           </div>
         </section>
