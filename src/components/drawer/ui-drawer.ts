@@ -1,25 +1,25 @@
 import { LitElement, html, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { cn } from "../../utils";
-import tailwindStyles from "./sheet.css?inline";
+import tailwindStyles from "./drawer.css?inline";
 
 const styles = unsafeCSS(tailwindStyles);
 
-@customElement("ui-sheet")
-export class UiSheet extends LitElement {
+@customElement("ui-drawer")
+export class UiDrawer extends LitElement {
   static styles = [styles];
 
   @property({ type: Boolean, reflect: true }) open = false;
 
   constructor() {
     super();
-    this.addEventListener("sheet-close", () => {
+    this.addEventListener("drawer-close", () => {
       this.open = false;
       this.dispatchEvent(
         new CustomEvent("open-change", { detail: { open: false } })
       );
     });
-    this.addEventListener("sheet-trigger", () => {
+    this.addEventListener("drawer-trigger", () => {
       this.open = true;
       this.dispatchEvent(
         new CustomEvent("open-change", { detail: { open: true } })
@@ -29,10 +29,10 @@ export class UiSheet extends LitElement {
 
   updated(changedProperties: Map<string, any>) {
     if (changedProperties.has("open")) {
-      const content = this.querySelector("ui-sheet-content");
+      const content = this.querySelector("ui-drawer-content");
       if (content) (content as LitElement).requestUpdate();
 
-      const overlay = this.querySelector("ui-sheet-overlay");
+      const overlay = this.querySelector("ui-drawer-overlay");
       if (overlay) (overlay as LitElement).requestUpdate();
 
       if (this.open) {
@@ -48,8 +48,8 @@ export class UiSheet extends LitElement {
   }
 }
 
-@customElement("ui-sheet-trigger")
-export class UiSheetTrigger extends LitElement {
+@customElement("ui-drawer-trigger")
+export class UiDrawerTrigger extends LitElement {
   static styles = [styles];
 
   render() {
@@ -57,7 +57,7 @@ export class UiSheetTrigger extends LitElement {
       <div
         @click=${() =>
           this.dispatchEvent(
-            new CustomEvent("sheet-trigger", { bubbles: true, composed: true })
+            new CustomEvent("drawer-trigger", { bubbles: true, composed: true })
           )}
         class="cursor-pointer inline-block"
       >
@@ -67,12 +67,12 @@ export class UiSheetTrigger extends LitElement {
   }
 }
 
-@customElement("ui-sheet-overlay")
-export class UiSheetOverlay extends LitElement {
+@customElement("ui-drawer-overlay")
+export class UiDrawerOverlay extends LitElement {
   static styles = [styles];
 
   render() {
-    const parent = this.closest("ui-sheet") as UiSheet;
+    const parent = this.closest("ui-drawer") as UiDrawer;
     const isOpen = parent?.open || false;
 
     return html`
@@ -83,21 +83,21 @@ export class UiSheetOverlay extends LitElement {
         )}"
         @click=${() =>
           parent.dispatchEvent(
-            new CustomEvent("sheet-close", { bubbles: true, composed: true })
+            new CustomEvent("drawer-close", { bubbles: true, composed: true })
           )}
       ></div>
     `;
   }
 }
 
-@customElement("ui-sheet-content")
-export class UiSheetContent extends LitElement {
+@customElement("ui-drawer-content")
+export class UiDrawerContent extends LitElement {
   static styles = [styles];
 
   @property() side: "top" | "bottom" | "left" | "right" = "right";
 
   render() {
-    const parent = this.closest("ui-sheet") as UiSheet;
+    const parent = this.closest("ui-drawer") as UiDrawer;
     const isOpen = parent?.open || false;
 
     const sideVariants = {
@@ -112,7 +112,7 @@ export class UiSheetContent extends LitElement {
     return html`
       <!-- Overlay is technically sibling usually, but here we require strict hierarchy or use portal. 
          For simplicity in Web Components without Portal, we render overlay inside sheet or content renders it?
-         Ideally overlay is separate. Let's assume user puts <ui-sheet-overlay> in <ui-sheet>
+         Ideally overlay is separate. Let's assume user puts <ui-drawer-overlay> in <ui-drawer>
     -->
       <div
         class="${cn(
@@ -125,7 +125,7 @@ export class UiSheetContent extends LitElement {
           type="button"
           @click=${() =>
             parent.dispatchEvent(
-              new CustomEvent("sheet-close", { bubbles: true, composed: true })
+              new CustomEvent("drawer-close", { bubbles: true, composed: true })
             )}
           class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary"
         >
@@ -152,11 +152,28 @@ export class UiSheetContent extends LitElement {
   }
 }
 
+// Adding UiDrawerFooter to match usage in index.html and complete the set
+@customElement("ui-drawer-footer")
+export class UiDrawerFooter extends LitElement {
+  static styles = [styles];
+
+  render() {
+    return html`
+      <div
+        class="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2"
+      >
+        <slot></slot>
+      </div>
+    `;
+  }
+}
+
 declare global {
   interface HTMLElementTagNameMap {
-    "ui-sheet": UiSheet;
-    "ui-sheet-trigger": UiSheetTrigger;
-    "ui-sheet-content": UiSheetContent;
-    "ui-sheet-overlay": UiSheetOverlay;
+    "ui-drawer": UiDrawer;
+    "ui-drawer-trigger": UiDrawerTrigger;
+    "ui-drawer-content": UiDrawerContent;
+    "ui-drawer-overlay": UiDrawerOverlay;
+    "ui-drawer-footer": UiDrawerFooter;
   }
 }

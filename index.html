@@ -7,460 +7,718 @@
     <script type="module" src="./src/index.ts"></script>
     <link rel="stylesheet" href="./src/globals.css" />
   </head>
-  <body class="bg-gray-50 font-sans text-gray-900">
-    <!-- Navbar Demo -->
-    <ui-navbar>
-      <ui-navbar-brand>Andersseen UI</ui-navbar-brand>
-      <ui-navbar-content>
-        <ui-button variant="ghost" size="sm">Documentation</ui-button>
-        <ui-button variant="ghost" size="sm">Components</ui-button>
-        <ui-button variant="primary" size="sm">Get Started</ui-button>
-      </ui-navbar-content>
-    </ui-navbar>
-
-    <div class="max-w-4xl mx-auto space-y-12 p-10">
-      <div class="border-b pb-4">
-        <h1 class="text-3xl font-bold">Component Demo</h1>
-        <p class="text-gray-500 mt-2">Built with Lit, Tailwind v4, and CVA.</p>
-      </div>
-
-      <!-- Buttons -->
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
-          Buttons
-        </h2>
+  <body
+    class="bg-gray-50 font-sans text-gray-900 flex h-screen overflow-hidden"
+  >
+    <!-- Sidebar -->
+    <ui-sidebar class="hidden md:block w-64 border-r bg-white h-full">
+      <ui-sidebar-header>
         <div
-          class="flex flex-wrap gap-4 p-6 bg-white rounded-lg shadow-sm border border-gray-100"
+          class="flex items-center justify-between group-data-[collapsed=true]:justify-center"
         >
-          <ui-button variant="primary">Primary</ui-button>
-          <ui-button variant="secondary">Secondary</ui-button>
-          <ui-button variant="outline">Outline</ui-button>
-          <ui-button variant="ghost">Ghost</ui-button>
-          <ui-button variant="destructive">Destructive</ui-button>
-          <ui-button size="icon" variant="outline">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="h-4 w-4"
-            >
-              <path d="m5 12 7-7 7 7" />
-              <path d="M12 19V5" />
-            </svg>
-          </ui-button>
+          <span
+            class="font-bold text-lg px-2 whitespace-nowrap overflow-hidden transition-all duration-300 group-data-[collapsed=true]:w-0 group-data-[collapsed=true]:p-0 group-data-[collapsed=true]:opacity-0"
+            >Demo App</span
+          >
+          <ui-sidebar-trigger></ui-sidebar-trigger>
         </div>
-      </section>
-
-      <!-- Cards -->
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
-          Card
-        </h2>
-        <div class="grid md:grid-cols-2 gap-6">
-          <ui-card>
-            <ui-card-header>
-              <ui-card-title>Create project</ui-card-title>
-              <ui-card-description
-                >Deploy your new project in one-click.</ui-card-description
+      </ui-sidebar-header>
+      <ui-sidebar-content>
+        <ui-sidebar-menu>
+          <ui-sidebar-group>
+            <ui-sidebar-group-label>Components</ui-sidebar-group-label>
+            <ui-sidebar-menu-item>
+              <ui-sidebar-menu-button href="#buttons"
+                >Buttons</ui-sidebar-menu-button
               >
-            </ui-card-header>
-            <ui-card-content>
-              <form>
-                <div class="grid w-full items-center gap-4">
-                  <div class="flex flex-col space-y-1.5">
-                    <label
-                      class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      for="name"
-                      >Name</label
-                    >
-                    <input
-                      class="flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                      id="name"
-                      placeholder="Name of your project"
-                    />
+            </ui-sidebar-menu-item>
+            <ui-sidebar-menu-item>
+              <ui-sidebar-menu-button href="#card">Card</ui-sidebar-menu-button>
+            </ui-sidebar-menu-item>
+            <ui-sidebar-menu-item>
+              <ui-sidebar-menu-button href="#alert"
+                >Alert</ui-sidebar-menu-button
+              >
+            </ui-sidebar-menu-item>
+            <ui-sidebar-menu-item>
+              <ui-sidebar-menu-button href="#accordion"
+                >Accordion</ui-sidebar-menu-button
+              >
+            </ui-sidebar-menu-item>
+            <ui-sidebar-menu-item>
+              <ui-sidebar-menu-button href="#modal"
+                >Modal</ui-sidebar-menu-button
+              >
+            </ui-sidebar-menu-item>
+            <ui-sidebar-menu-item>
+              <ui-sidebar-menu-button href="#badge"
+                >Badge</ui-sidebar-menu-button
+              >
+            </ui-sidebar-menu-item>
+            <ui-sidebar-menu-item>
+              <ui-sidebar-menu-button href="#switch"
+                >Switch</ui-sidebar-menu-button
+              >
+            </ui-sidebar-menu-item>
+            <ui-sidebar-menu-item>
+              <ui-sidebar-menu-button href="#toggle"
+                >Toggle</ui-sidebar-menu-button
+              >
+            </ui-sidebar-menu-item>
+            <ui-sidebar-menu-item>
+              <ui-sidebar-menu-button href="#carousel"
+                >Carousel</ui-sidebar-menu-button
+              >
+            </ui-sidebar-menu-item>
+            <ui-sidebar-menu-item>
+              <ui-sidebar-menu-button href="#tabs">Tabs</ui-sidebar-menu-button>
+            </ui-sidebar-menu-item>
+            <ui-sidebar-menu-item>
+              <ui-sidebar-menu-button href="#tooltip"
+                >Tooltip</ui-sidebar-menu-button
+              >
+            </ui-sidebar-menu-item>
+            <ui-sidebar-menu-item>
+              <ui-sidebar-menu-button href="#dropdown"
+                >Dropdown</ui-sidebar-menu-button
+              >
+            </ui-sidebar-menu-item>
+            <ui-sidebar-menu-item>
+              <ui-sidebar-menu-button href="#breadcrumb"
+                >Breadcrumb</ui-sidebar-menu-button
+              >
+            </ui-sidebar-menu-item>
+            <ui-sidebar-menu-item>
+              <ui-sidebar-menu-button href="#menu">Menu</ui-sidebar-menu-button>
+            </ui-sidebar-menu-item>
+            <ui-sidebar-menu-item>
+              <ui-sidebar-menu-button href="#pagination"
+                >Pagination</ui-sidebar-menu-button
+              >
+            </ui-sidebar-menu-item>
+            <ui-sidebar-menu-item>
+              <ui-sidebar-menu-button href="#drawer"
+                >Drawer</ui-sidebar-menu-button
+              >
+            </ui-sidebar-menu-item>
+            <ui-sidebar-menu-item>
+              <ui-sidebar-menu-button href="#toast"
+                >Toast</ui-sidebar-menu-button
+              >
+            </ui-sidebar-menu-item>
+          </ui-sidebar-group>
+        </ui-sidebar-menu>
+      </ui-sidebar-content>
+      <ui-sidebar-footer>
+        <div class="text-xs text-slate-400 p-2">v0.1.0</div>
+      </ui-sidebar-footer>
+    </ui-sidebar>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+      <!-- Navbar Demo -->
+      <ui-navbar>
+        <ui-navbar-brand class="md:hidden">Andrsn UI</ui-navbar-brand>
+        <ui-navbar-content>
+          <ui-button variant="ghost" size="sm">Documentation</ui-button>
+          <ui-button variant="ghost" size="sm">Components</ui-button>
+          <ui-button variant="primary" size="sm">Get Started</ui-button>
+        </ui-navbar-content>
+      </ui-navbar>
+
+      <main class="flex-1 overflow-auto p-10 space-y-12 scroll-smooth">
+        <div class="border-b pb-4">
+          <h1 class="text-3xl font-bold">Component Demo</h1>
+          <p class="text-gray-500 mt-2">
+            Built with Lit, Tailwind v4, and CVA.
+          </p>
+        </div>
+
+        <!-- Buttons -->
+        <section id="buttons" class="space-y-4 pt-4">
+          <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+            Buttons
+          </h2>
+          <div
+            class="flex flex-wrap gap-4 p-6 bg-white rounded-lg shadow-sm border border-gray-100"
+          >
+            <ui-button variant="primary">Primary</ui-button>
+            <ui-button variant="secondary">Secondary</ui-button>
+            <ui-button variant="outline">Outline</ui-button>
+            <ui-button variant="ghost">Ghost</ui-button>
+            <ui-button variant="destructive">Destructive</ui-button>
+            <ui-button size="icon" variant="outline">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-4 w-4"
+              >
+                <path d="m5 12 7-7 7 7" />
+                <path d="M12 19V5" />
+              </svg>
+            </ui-button>
+          </div>
+        </section>
+
+        <!-- Cards -->
+        <section id="card" class="space-y-4 pt-4">
+          <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+            Card
+          </h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <ui-card>
+              <ui-card-header>
+                <ui-card-title>Create project</ui-card-title>
+                <ui-card-description
+                  >Deploy your new project in one-click.</ui-card-description
+                >
+              </ui-card-header>
+              <ui-card-content>
+                <form>
+                  <div class="grid w-full items-center gap-4">
+                    <div class="flex flex-col space-y-1.5">
+                      <label
+                        class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        for="name"
+                        >Name</label
+                      >
+                      <input
+                        class="flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                        id="name"
+                        placeholder="Name of your project"
+                      />
+                    </div>
+                  </div>
+                </form>
+              </ui-card-content>
+              <ui-card-footer class="justify-between">
+                <ui-button variant="outline">Cancel</ui-button>
+                <ui-button>Deploy</ui-button>
+              </ui-card-footer>
+            </ui-card>
+
+            <ui-card>
+              <ui-card-header>
+                <ui-card-title>Notifications</ui-card-title>
+                <ui-card-description
+                  >You have 3 unread messages.</ui-card-description
+                >
+              </ui-card-header>
+              <ui-card-content class="grid gap-4">
+                <div class="flex items-center space-x-4 rounded-md border p-4">
+                  <div class="flex-1 space-y-1">
+                    <p class="text-sm font-medium leading-none">
+                      Push Notifications
+                    </p>
+                    <p class="text-sm text-slate-500">
+                      Send notifications to device.
+                    </p>
                   </div>
                 </div>
-              </form>
-            </ui-card-content>
-            <ui-card-footer class="justify-between">
-              <ui-button variant="outline">Cancel</ui-button>
-              <ui-button>Deploy</ui-button>
-            </ui-card-footer>
-          </ui-card>
+              </ui-card-content>
+              <ui-card-footer>
+                <ui-button class="w-full">Mark all as read</ui-button>
+              </ui-card-footer>
+            </ui-card>
+          </div>
+        </section>
 
-          <ui-card>
-            <ui-card-header>
-              <ui-card-title>Notifications</ui-card-title>
-              <ui-card-description
-                >You have 3 unread messages.</ui-card-description
+        <!-- Alert -->
+        <section id="alert" class="space-y-4 pt-4">
+          <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+            Alert
+          </h2>
+          <div class="space-y-4">
+            <ui-alert>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-4 w-4"
               >
-            </ui-card-header>
-            <ui-card-content class="grid gap-4">
-              <div class="flex items-center space-x-4 rounded-md border p-4">
-                <div class="flex-1 space-y-1">
-                  <p class="text-sm font-medium leading-none">
-                    Push Notifications
-                  </p>
-                  <p class="text-sm text-slate-500">
-                    Send notifications to device.
-                  </p>
-                </div>
-              </div>
-            </ui-card-content>
-            <ui-card-footer>
-              <ui-button class="w-full">Mark all as read</ui-button>
-            </ui-card-footer>
-          </ui-card>
-        </div>
-      </section>
-
-      <!-- Alert -->
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
-          Alert
-        </h2>
-        <div class="space-y-4">
-          <ui-alert>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="h-4 w-4"
-            >
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-              <path
-                d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
-              />
-            </svg>
-            <ui-alert-title>Heads up!</ui-alert-title>
-            <ui-alert-description>
-              You can add components to your app using the cli.
-            </ui-alert-description>
-          </ui-alert>
-
-          <ui-alert variant="destructive">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="h-4 w-4"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <path d="m15 9-6 6" />
-              <path d="m9 9 6 6" />
-            </svg>
-            <ui-alert-title>Error</ui-alert-title>
-            <ui-alert-description>
-              Your session has expired. Please log in again.
-            </ui-alert-description>
-          </ui-alert>
-        </div>
-      </section>
-
-      <!-- Accordion -->
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
-          Accordion
-        </h2>
-        <ui-accordion type="single" collapsible class="w-full">
-          <ui-accordion-item value="item-1">
-            <ui-accordion-trigger>Is it accessible?</ui-accordion-trigger>
-            <ui-accordion-content>
-              Yes. It adheres to the WAI-ARIA design pattern.
-            </ui-accordion-content>
-          </ui-accordion-item>
-          <ui-accordion-item value="item-2">
-            <ui-accordion-trigger>Is it styled?</ui-accordion-trigger>
-            <ui-accordion-content>
-              Yes. It comes with default styles that matches the other
-              components' aesthetic.
-            </ui-accordion-content>
-          </ui-accordion-item>
-          <ui-accordion-item value="item-3">
-            <ui-accordion-trigger>Is it animated?</ui-accordion-trigger>
-            <ui-accordion-content>
-              Yes. It's animated by default, but you can disable it if you
-              prefer.
-            </ui-accordion-content>
-          </ui-accordion-item>
-        </ui-accordion>
-      </section>
-
-      <!-- Modal -->
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
-          Modal (Dialog)
-        </h2>
-        <div class="p-6 bg-white rounded-lg shadow-sm border border-gray-100">
-          <ui-button id="open-modal">Open Modal</ui-button>
-
-          <ui-modal id="demo-modal">
-            <ui-modal-header>
-              <ui-modal-title>Edit Profile</ui-modal-title>
-            </ui-modal-header>
-            <div class="grid gap-4 py-4">
-              <div class="grid grid-cols-4 items-center gap-4">
-                <label for="username" class="text-right text-sm font-medium"
-                  >Username</label
-                >
-                <input
-                  id="username"
-                  value="@peduarte"
-                  class="col-span-3 flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                <path
+                  d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
                 />
-              </div>
-            </div>
-            <ui-modal-footer>
-              <ui-button variant="primary" id="save-modal"
-                >Save changes</ui-button
+              </svg>
+              <ui-alert-title>Heads up!</ui-alert-title>
+              <ui-alert-description>
+                You can add components to your app using the cli.
+              </ui-alert-description>
+            </ui-alert>
+
+            <ui-alert variant="destructive">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-4 w-4"
               >
-            </ui-modal-footer>
-          </ui-modal>
-        </div>
-        <script>
-          const modal = document.querySelector("#demo-modal");
-          const openBtn = document.querySelector("#open-modal");
-          const saveBtn = document.querySelector("#save-modal");
+                <circle cx="12" cy="12" r="10" />
+                <path d="m15 9-6 6" />
+                <path d="m9 9 6 6" />
+              </svg>
+              <ui-alert-title>Error</ui-alert-title>
+              <ui-alert-description>
+                Your session has expired. Please log in again.
+              </ui-alert-description>
+            </ui-alert>
+          </div>
+        </section>
 
-          openBtn.addEventListener("click", () => {
-            modal.open = true;
-          });
+        <!-- Accordion -->
+        <section id="accordion" class="space-y-4 pt-4">
+          <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+            Accordion
+          </h2>
+          <ui-accordion type="single" collapsible class="w-full">
+            <ui-accordion-item value="item-1">
+              <ui-accordion-trigger>Is it accessible?</ui-accordion-trigger>
+              <ui-accordion-content>
+                Yes. It adheres to the WAI-ARIA design pattern.
+              </ui-accordion-content>
+            </ui-accordion-item>
+            <ui-accordion-item value="item-2">
+              <ui-accordion-trigger>Is it styled?</ui-accordion-trigger>
+              <ui-accordion-content>
+                Yes. It comes with default styles that matches the other
+                components' aesthetic.
+              </ui-accordion-content>
+            </ui-accordion-item>
+            <ui-accordion-item value="item-3">
+              <ui-accordion-trigger>Is it animated?</ui-accordion-trigger>
+              <ui-accordion-content>
+                Yes. It's animated by default, but you can disable it if you
+                prefer.
+              </ui-accordion-content>
+            </ui-accordion-item>
+          </ui-accordion>
+        </section>
 
-          saveBtn.addEventListener("click", () => {
-            modal.open = false;
-            alert("Saved!");
-          });
-        </script>
-      </section>
-      <!-- Tabs -->
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
-          Tabs
-        </h2>
-        <ui-tabs default-value="account" class="w-[400px]">
-          <ui-tabs-list class="grid w-full grid-cols-2">
-            <ui-tabs-trigger value="account">Account</ui-tabs-trigger>
-            <ui-tabs-trigger value="password">Password</ui-tabs-trigger>
-          </ui-tabs-list>
-          <ui-tabs-content value="account">
-            <ui-card>
-              <ui-card-header>
-                <ui-card-title>Account</ui-card-title>
-                <ui-card-description>
-                  Make changes to your account here. Click save when you're done.
-                </ui-card-description>
-              </ui-card-header>
-              <ui-card-content class="space-y-2">
-                <div class="space-y-1">
-                  <label for="name">Name</label>
+        <!-- Modal -->
+        <section id="modal" class="space-y-4 pt-4">
+          <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+            Modal (Dialog)
+          </h2>
+          <div class="p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+            <ui-button id="open-modal">Open Modal</ui-button>
+
+            <ui-modal id="demo-modal">
+              <ui-modal-header>
+                <ui-modal-title>Edit Profile</ui-modal-title>
+              </ui-modal-header>
+              <div class="grid gap-4 py-4">
+                <div class="grid grid-cols-4 items-center gap-4">
+                  <label for="username" class="text-right text-sm font-medium"
+                    >Username</label
+                  >
                   <input
-                    id="name"
-                    value="Pedro Duarte"
-                    class="flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    id="username"
+                    value="@peduarte"
+                    class="col-span-3 flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                   />
                 </div>
-              </ui-card-content>
-              <ui-card-footer>
-                <ui-button>Save changes</ui-button>
-              </ui-card-footer>
-            </ui-card>
-          </ui-tabs-content>
-          <ui-tabs-content value="password">
-            <ui-card>
-              <ui-card-header>
-                <ui-card-title>Password</ui-card-title>
-                <ui-card-description>
-                  Change your password here. After saving, you'll be logged out.
-                </ui-card-description>
-              </ui-card-header>
-              <ui-card-content class="space-y-2">
-                <div class="space-y-1">
-                  <label for="current">Current password</label>
-                  <input
-                    id="current"
-                    type="password"
-                    class="flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                  />
-                </div>
-                <div class="space-y-1">
-                  <label for="new">New password</label>
-                  <input
-                    id="new"
-                    type="password"
-                    class="flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                  />
-                </div>
-              </ui-card-content>
-              <ui-card-footer>
-                <ui-button>Save password</ui-button>
-              </ui-card-footer>
-            </ui-card>
-          </ui-tabs-content>
-        </ui-tabs>
-      </section>
+              </div>
+              <ui-modal-footer>
+                <ui-button variant="primary" id="save-modal"
+                  >Save changes</ui-button
+                >
+              </ui-modal-footer>
+            </ui-modal>
+          </div>
+          <script>
+            const modal = document.querySelector("#demo-modal");
+            const openBtn = document.querySelector("#open-modal");
+            const saveBtn = document.querySelector("#save-modal");
 
-      <!-- Tooltip -->
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
-          Tooltip
-        </h2>
-        <div class="flex flex-wrap gap-4 mt-10 ml-10">
-          <ui-tooltip side="top">
-            <ui-tooltip-trigger>
-              <ui-button variant="outline">Top</ui-button>
-            </ui-tooltip-trigger>
-            <ui-tooltip-content>Tooltip Top</ui-tooltip-content>
-          </ui-tooltip>
+            openBtn.addEventListener("click", () => {
+              modal.open = true;
+            });
 
-          <ui-tooltip side="bottom">
-            <ui-tooltip-trigger>
-              <ui-button variant="outline">Bottom</ui-button>
-            </ui-tooltip-trigger>
-            <ui-tooltip-content>Tooltip Bottom</ui-tooltip-content>
-          </ui-tooltip>
+            saveBtn.addEventListener("click", () => {
+              modal.open = false;
+              alert("Saved!");
+            });
+          </script>
+        </section>
+        <!-- Tabs -->
+        <section id="tabs" class="space-y-4 pt-4">
+          <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+            Tabs
+          </h2>
+          <ui-tabs default-value="account" class="w-[400px]">
+            <ui-tabs-list class="grid w-full grid-cols-2">
+              <ui-tabs-trigger value="account">Account</ui-tabs-trigger>
+              <ui-tabs-trigger value="password">Password</ui-tabs-trigger>
+            </ui-tabs-list>
+            <ui-tabs-content value="account">
+              <ui-card>
+                <ui-card-header>
+                  <ui-card-title>Account</ui-card-title>
+                  <ui-card-description>
+                    Make changes to your account here. Click save when you're
+                    done.
+                  </ui-card-description>
+                </ui-card-header>
+                <ui-card-content class="space-y-2">
+                  <div class="space-y-1">
+                    <label for="name">Name</label>
+                    <input
+                      id="name"
+                      value="Pedro Duarte"
+                      class="flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    />
+                  </div>
+                </ui-card-content>
+                <ui-card-footer>
+                  <ui-button>Save changes</ui-button>
+                </ui-card-footer>
+              </ui-card>
+            </ui-tabs-content>
+            <ui-tabs-content value="password">
+              <ui-card>
+                <ui-card-header>
+                  <ui-card-title>Password</ui-card-title>
+                  <ui-card-description>
+                    Change your password here. After saving, you'll be logged
+                    out.
+                  </ui-card-description>
+                </ui-card-header>
+                <ui-card-content class="space-y-2">
+                  <div class="space-y-1">
+                    <label for="current">Current password</label>
+                    <input
+                      id="current"
+                      type="password"
+                      class="flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    />
+                  </div>
+                  <div class="space-y-1">
+                    <label for="new">New password</label>
+                    <input
+                      id="new"
+                      type="password"
+                      class="flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    />
+                  </div>
+                </ui-card-content>
+                <ui-card-footer>
+                  <ui-button>Save password</ui-button>
+                </ui-card-footer>
+              </ui-card>
+            </ui-tabs-content>
+          </ui-tabs>
+        </section>
 
-          <ui-tooltip side="left">
-            <ui-tooltip-trigger>
-              <ui-button variant="outline">Left</ui-button>
-            </ui-tooltip-trigger>
-            <ui-tooltip-content>Tooltip Left</ui-tooltip-content>
-          </ui-tooltip>
+        <!-- Tooltip -->
+        <section id="tooltip" class="space-y-4 pt-4">
+          <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+            Tooltip
+          </h2>
+          <div class="flex flex-wrap gap-4 mt-10 ml-10">
+            <ui-tooltip side="top">
+              <ui-tooltip-trigger>
+                <ui-button variant="outline">Top</ui-button>
+              </ui-tooltip-trigger>
+              <ui-tooltip-content>Tooltip Top</ui-tooltip-content>
+            </ui-tooltip>
 
-          <ui-tooltip side="right">
-            <ui-tooltip-trigger>
-              <ui-button variant="outline">Right</ui-button>
-            </ui-tooltip-trigger>
-            <ui-tooltip-content>Tooltip Right</ui-tooltip-content>
-          </ui-tooltip>
-        </div>
-      </section>
+            <ui-tooltip side="bottom">
+              <ui-tooltip-trigger>
+                <ui-button variant="outline">Bottom</ui-button>
+              </ui-tooltip-trigger>
+              <ui-tooltip-content>Tooltip Bottom</ui-tooltip-content>
+            </ui-tooltip>
 
-      <!-- Dropdown -->
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
-          Dropdown Menu
-        </h2>
-        <ui-dropdown>
-          <ui-dropdown-trigger>
-             <ui-button variant="outline">Open Menu</ui-button>
-          </ui-dropdown-trigger>
-          <ui-dropdown-content>
+            <ui-tooltip side="left">
+              <ui-tooltip-trigger>
+                <ui-button variant="outline">Left</ui-button>
+              </ui-tooltip-trigger>
+              <ui-tooltip-content>Tooltip Left</ui-tooltip-content>
+            </ui-tooltip>
+
+            <ui-tooltip side="right">
+              <ui-tooltip-trigger>
+                <ui-button variant="outline">Right</ui-button>
+              </ui-tooltip-trigger>
+              <ui-tooltip-content>Tooltip Right</ui-tooltip-content>
+            </ui-tooltip>
+          </div>
+        </section>
+
+        <!-- Dropdown -->
+        <section id="dropdown" class="space-y-4 pt-4">
+          <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+            Dropdown Menu
+          </h2>
+          <ui-dropdown>
+            <ui-dropdown-trigger>
+              <ui-button variant="outline">Open Menu</ui-button>
+            </ui-dropdown-trigger>
+            <ui-dropdown-content>
               <ui-dropdown-item>Profile</ui-dropdown-item>
               <ui-dropdown-item>Billing</ui-dropdown-item>
               <ui-dropdown-item>Team</ui-dropdown-item>
               <ui-dropdown-item>Subscription</ui-dropdown-item>
-          </ui-dropdown-content>
-        </ui-dropdown>
-      </section>
+            </ui-dropdown-content>
+          </ui-dropdown>
+        </section>
 
-      <!-- Breadcrumb -->
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
-          Breadcrumb
-        </h2>
-        <ui-breadcrumb>
+        <!-- Breadcrumb -->
+        <section id="breadcrumb" class="space-y-4 pt-4">
+          <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+            Breadcrumb
+          </h2>
+          <ui-breadcrumb>
             <ui-breadcrumb-item href="#">Home</ui-breadcrumb-item>
             <ui-breadcrumb-separator></ui-breadcrumb-separator>
             <ui-breadcrumb-item href="#">Components</ui-breadcrumb-item>
             <ui-breadcrumb-separator></ui-breadcrumb-separator>
             <ui-breadcrumb-item active>Breadcrumb</ui-breadcrumb-item>
-        </ui-breadcrumb>
-      </section>
+          </ui-breadcrumb>
+        </section>
 
-      <!-- Menu List -->
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
-          Menu List
-        </h2>
-        <div class="w-64">
+        <!-- Menu List -->
+        <section id="menu" class="space-y-4 pt-4">
+          <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+            Menu List
+          </h2>
+          <div class="w-64">
             <ui-menu>
-                <ui-menu-label>My Account</ui-menu-label>
-                <ui-menu-separator></ui-menu-separator>
-                <ui-menu-item>Profile</ui-menu-item>
-                <ui-menu-item>Billing</ui-menu-item>
-                <ui-menu-item>Settings</ui-menu-item>
-                <ui-menu-separator></ui-menu-separator>
-                <ui-menu-item disabled>Admin Panel</ui-menu-item>
+              <ui-menu-label>My Account</ui-menu-label>
+              <ui-menu-separator></ui-menu-separator>
+              <ui-menu-item>Profile</ui-menu-item>
+              <ui-menu-item>Billing</ui-menu-item>
+              <ui-menu-item>Settings</ui-menu-item>
+              <ui-menu-separator></ui-menu-separator>
+              <ui-menu-item disabled>Admin Panel</ui-menu-item>
             </ui-menu>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <!-- Pagination -->
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
-          Pagination
-        </h2>
-        <ui-pagination>
+        <!-- Pagination -->
+        <section id="pagination" class="space-y-4 pt-4">
+          <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+            Pagination
+          </h2>
+          <ui-pagination>
             <ui-pagination-content>
-                <ui-pagination-previous href="#"></ui-pagination-previous>
-                <ui-pagination-link href="#" isActive>1</ui-pagination-link>
-                <ui-pagination-link href="#">2</ui-pagination-link>
-                <ui-pagination-link href="#">3</ui-pagination-link>
-                <ui-pagination-ellipsis></ui-pagination-ellipsis>
-                <ui-pagination-next href="#"></ui-pagination-next>
+              <ui-pagination-previous href="#"></ui-pagination-previous>
+              <ui-pagination-link href="#" isActive>1</ui-pagination-link>
+              <ui-pagination-link href="#">2</ui-pagination-link>
+              <ui-pagination-link href="#">3</ui-pagination-link>
+              <ui-pagination-ellipsis></ui-pagination-ellipsis>
+              <ui-pagination-next href="#"></ui-pagination-next>
             </ui-pagination-content>
-        </ui-pagination>
-      </section>
+          </ui-pagination>
+        </section>
 
-      <!-- Sheet (Sidebar) -->
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
-          Sheet (Sidebar)
-        </h2>
-        <ui-sheet>
-          <ui-sheet-trigger>
-            <ui-button variant="outline">Open Sheet</ui-button>
-          </ui-sheet-trigger>
-          <ui-sheet-overlay></ui-sheet-overlay>
-          <ui-sheet-content side="right">
-            <div class="space-y-4">
-               <h2 class="text-lg font-semibold">Sidebar Menu</h2>
-               <p class="text-sm text-slate-500">
+        <!-- Drawer -->
+        <section id="drawer" class="space-y-4 pt-4">
+          <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+            Drawer
+          </h2>
+          <ui-drawer>
+            <ui-drawer-trigger>
+              <ui-button variant="outline">Open Drawer</ui-button>
+            </ui-drawer-trigger>
+            <ui-drawer-overlay></ui-drawer-overlay>
+            <ui-drawer-content side="right">
+              <div class="space-y-4">
+                <h2 class="text-lg font-semibold">Drawer Menu</h2>
+                <p class="text-sm text-slate-500">
                   This content slides in from the right.
-               </p>
-               <div class="grid gap-4 py-4">
-                 <ui-button variant="ghost" class="justify-start">Home</ui-button>
-                 <ui-button variant="ghost" class="justify-start">Settings</ui-button>
-                 <ui-button variant="ghost" class="justify-start">Profile</ui-button>
-               </div>
-               <ui-sheet-footer>
+                </p>
+                <div class="grid gap-4 py-4">
+                  <ui-button variant="ghost" class="justify-start"
+                    >Home</ui-button
+                  >
+                  <ui-button variant="ghost" class="justify-start"
+                    >Settings</ui-button
+                  >
+                  <ui-button variant="ghost" class="justify-start"
+                    >Profile</ui-button
+                  >
+                </div>
+                <ui-drawer-footer>
                   <ui-button class="w-full">Logout</ui-button>
-               </ui-sheet-footer>
-            </div>
-          </ui-sheet-content>
-        </ui-sheet>
-      </section>
+                </ui-drawer-footer>
+              </div>
+            </ui-drawer-content>
+          </ui-drawer>
+        </section>
 
-      <!-- Toast -->
-      <section class="space-y-4">
-        <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
-          Toast
-        </h2>
-        <ui-button
-          variant="outline"
-          onclick="window.dispatchEvent(new CustomEvent('show-toast', { detail: { title: 'Scheduled: Catch up', description: 'Friday, February 10, 2023 at 5:57 PM', duration: 5000 } }))"
-        >
-          Add to calendar
-        </ui-button>
-      </section>
+        <!-- Badge -->
+        <section id="badge" class="space-y-4 pt-4">
+          <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+            Badge
+          </h2>
+          <div class="flex gap-4">
+            <ui-badge>Default</ui-badge>
+            <ui-badge variant="secondary">Secondary</ui-badge>
+            <ui-badge variant="outline">Outline</ui-badge>
+            <ui-badge variant="destructive">Destructive</ui-badge>
+          </div>
+        </section>
+
+        <!-- Switch -->
+        <section id="switch" class="space-y-4 pt-4">
+          <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+            Switch
+          </h2>
+          <div class="flex gap-4 items-center">
+            <ui-switch></ui-switch>
+            <ui-switch checked></ui-switch>
+            <ui-switch disabled></ui-switch>
+          </div>
+        </section>
+
+        <!-- Toggle -->
+        <section id="toggle" class="space-y-4 pt-4">
+          <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+            Toggle
+          </h2>
+          <div class="flex gap-4">
+            <ui-toggle aria-label="Toggle italic">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-4 w-4"
+              >
+                <line x1="19" x2="10" y1="4" y2="4" />
+                <line x1="14" x2="5" y1="20" y2="20" />
+                <line x1="15" x2="9" y1="4" y2="20" />
+              </svg>
+            </ui-toggle>
+            <ui-toggle variant="outline" aria-label="Toggle bold">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-4 w-4"
+              >
+                <path d="M14 12a4 4 0 0 0 0-8H6v8" />
+                <path d="M15 20a4 4 0 0 0 0-8H6v8Z" />
+              </svg>
+            </ui-toggle>
+          </div>
+        </section>
+
+        <!-- Carousel -->
+        <section id="carousel" class="space-y-4 pt-4">
+          <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+            Carousel
+          </h2>
+          <div class="flex justify-center w-full px-16">
+            <ui-carousel class="w-full max-w-xs">
+              <ui-carousel-content>
+                <ui-carousel-item>
+                  <div class="p-1">
+                    <ui-card>
+                      <ui-card-content
+                        class="flex aspect-square items-center justify-center p-6"
+                      >
+                        <span class="text-4xl font-semibold">1</span>
+                      </ui-card-content>
+                    </ui-card>
+                  </div>
+                </ui-carousel-item>
+                <ui-carousel-item>
+                  <div class="p-1">
+                    <ui-card>
+                      <ui-card-content
+                        class="flex aspect-square items-center justify-center p-6"
+                      >
+                        <span class="text-4xl font-semibold">2</span>
+                      </ui-card-content>
+                    </ui-card>
+                  </div>
+                </ui-carousel-item>
+                <ui-carousel-item>
+                  <div class="p-1">
+                    <ui-card>
+                      <ui-card-content
+                        class="flex aspect-square items-center justify-center p-6"
+                      >
+                        <span class="text-4xl font-semibold">3</span>
+                      </ui-card-content>
+                    </ui-card>
+                  </div>
+                </ui-carousel-item>
+                <ui-carousel-item>
+                  <div class="p-1">
+                    <ui-card>
+                      <ui-card-content
+                        class="flex aspect-square items-center justify-center p-6"
+                      >
+                        <span class="text-4xl font-semibold">4</span>
+                      </ui-card-content>
+                    </ui-card>
+                  </div>
+                </ui-carousel-item>
+                <ui-carousel-item>
+                  <div class="p-1">
+                    <ui-card>
+                      <ui-card-content
+                        class="flex aspect-square items-center justify-center p-6"
+                      >
+                        <span class="text-4xl font-semibold">5</span>
+                      </ui-card-content>
+                    </ui-card>
+                  </div>
+                </ui-carousel-item>
+              </ui-carousel-content>
+              <ui-carousel-previous></ui-carousel-previous>
+              <ui-carousel-next></ui-carousel-next>
+            </ui-carousel>
+          </div>
+        </section>
+
+        <!-- Toast -->
+        <section id="toast" class="space-y-4 pt-4">
+          <h2 class="text-xl font-semibold border-l-4 border-slate-900 pl-3">
+            Toast
+          </h2>
+          <ui-button
+            variant="outline"
+            onclick="window.dispatchEvent(new CustomEvent('show-toast', { detail: { title: 'Scheduled: Catch up', description: 'Friday, February 10, 2023 at 5:57 PM', duration: 5000 } }))"
+          >
+            Add to calendar
+          </ui-button>
+        </section>
+      </main>
     </div>
     <ui-toaster></ui-toaster>
+  </body>
 </html>

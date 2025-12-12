@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@layer components {
+  :host {
+    display: inline-flex;
+  }
+}

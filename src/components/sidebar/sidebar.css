@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@layer components {
+  :host {
+    display: block;
+    height: 100%;
+  }
+}
