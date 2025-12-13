@@ -1,13 +1,10 @@
 import { LitElement, html, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { cn } from "../../utils";
 import tailwindStyles from "./drawer.css?inline";
-
-const styles = unsafeCSS(tailwindStyles);
 
 @customElement("ui-drawer")
 export class UiDrawer extends LitElement {
-  static styles = [styles];
+  static styles = [unsafeCSS(tailwindStyles)];
 
   @property({ type: Boolean, reflect: true }) open = false;
 
@@ -48,132 +45,8 @@ export class UiDrawer extends LitElement {
   }
 }
 
-@customElement("ui-drawer-trigger")
-export class UiDrawerTrigger extends LitElement {
-  static styles = [styles];
-
-  render() {
-    return html`
-      <div
-        @click=${() =>
-          this.dispatchEvent(
-            new CustomEvent("drawer-trigger", { bubbles: true, composed: true })
-          )}
-        class="cursor-pointer inline-block"
-      >
-        <slot></slot>
-      </div>
-    `;
-  }
-}
-
-@customElement("ui-drawer-overlay")
-export class UiDrawerOverlay extends LitElement {
-  static styles = [styles];
-
-  render() {
-    const parent = this.closest("ui-drawer") as UiDrawer;
-    const isOpen = parent?.open || false;
-
-    return html`
-      <div
-        class="${cn(
-          "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-          isOpen ? "data-[state=open] block" : "data-[state=closed] hidden"
-        )}"
-        @click=${() =>
-          parent.dispatchEvent(
-            new CustomEvent("drawer-close", { bubbles: true, composed: true })
-          )}
-      ></div>
-    `;
-  }
-}
-
-@customElement("ui-drawer-content")
-export class UiDrawerContent extends LitElement {
-  static styles = [styles];
-
-  @property() side: "top" | "bottom" | "left" | "right" = "right";
-
-  render() {
-    const parent = this.closest("ui-drawer") as UiDrawer;
-    const isOpen = parent?.open || false;
-
-    const sideVariants = {
-      top: "inset-x-0 top-0 border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
-      bottom:
-        "inset-x-0 bottom-0 border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
-      left: "inset-y-0 left-0 h-full w-3/4 border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm",
-      right:
-        "inset-y-0 right-0 h-full w-3/4 border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm",
-    };
-
-    return html`
-      <!-- Overlay is technically sibling usually, but here we require strict hierarchy or use portal. 
-         For simplicity in Web Components without Portal, we render overlay inside sheet or content renders it?
-         Ideally overlay is separate. Let's assume user puts <ui-drawer-overlay> in <ui-drawer>
-    -->
-      <div
-        class="${cn(
-          "fixed z-50 gap-4 bg-white p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
-          sideVariants[this.side],
-          isOpen ? "data-[state=open] block" : "data-[state=closed] hidden"
-        )}"
-      >
-        <button
-          type="button"
-          @click=${() =>
-            parent.dispatchEvent(
-              new CustomEvent("drawer-close", { bubbles: true, composed: true })
-            )}
-          class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="h-4 w-4"
-          >
-            <path d="M18 6 6 18" />
-            <path d="m6 6 12 12" />
-          </svg>
-          <span class="sr-only">Close</span>
-        </button>
-        <slot></slot>
-      </div>
-    `;
-  }
-}
-
-// Adding UiDrawerFooter to match usage in index.html and complete the set
-@customElement("ui-drawer-footer")
-export class UiDrawerFooter extends LitElement {
-  static styles = [styles];
-
-  render() {
-    return html`
-      <div
-        class="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2"
-      >
-        <slot></slot>
-      </div>
-    `;
-  }
-}
-
 declare global {
   interface HTMLElementTagNameMap {
     "ui-drawer": UiDrawer;
-    "ui-drawer-trigger": UiDrawerTrigger;
-    "ui-drawer-content": UiDrawerContent;
-    "ui-drawer-overlay": UiDrawerOverlay;
-    "ui-drawer-footer": UiDrawerFooter;
   }
 }

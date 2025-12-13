@@ -2,7 +2,7 @@ import { LitElement, html, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { cn } from "../../utils";
 import { UiAccordionItem } from "./ui-accordion-item";
-import { accordionContentVariants } from "./accordion.variants";
+
 import tailwindStyles from "./accordion.css?inline";
 
 const styles = unsafeCSS(tailwindStyles);

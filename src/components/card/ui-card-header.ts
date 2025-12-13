@@ -2,6 +2,7 @@ import { LitElement, html, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { cn } from "../../utils";
 import tailwindStyles from "./card.css?inline";
+import { cardHeaderVariants } from "./card.variants";
 
 const styles = unsafeCSS(tailwindStyles);
 
@@ -11,7 +12,7 @@ export class UiCardHeader extends LitElement {
 
   render() {
     return html`
-      <div class="${cn("flex flex-col space-y-1.5 p-6")}">
+      <div class="${cn(cardHeaderVariants())}">
         <slot></slot>
       </div>
     `;

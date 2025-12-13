@@ -2,25 +2,21 @@ import { LitElement, html, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import tailwindStyles from "./pagination.css?inline";
 
-@customElement("ui-pagination")
-export class UiPagination extends LitElement {
+@customElement("ui-pagination-item")
+export class UiPaginationItem extends LitElement {
   static styles = [unsafeCSS(tailwindStyles)];
 
   render() {
     return html`
-      <nav
-        role="navigation"
-        aria-label="pagination"
-        class="mx-auto flex w-full justify-center"
-      >
+      <li>
         <slot></slot>
-      </nav>
+      </li>
     `;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "ui-pagination": UiPagination;
+    "ui-pagination-item": UiPaginationItem;
   }
 }

@@ -2,6 +2,7 @@ import { LitElement, html, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import { cn } from "../../utils";
 import tailwindStyles from "./card.css?inline";
+import { cardVariants } from "./card.variants";
 import type { UiCardContent } from "./ui-card-content";
 import type { UiCardHeader } from "./ui-card-header";
 import type { UiCardTitle } from "./ui-card-title";
@@ -16,11 +17,7 @@ export class UiCard extends LitElement {
 
   render() {
     return html`
-      <div
-        class="${cn(
-          "rounded-xl border border-slate-200 bg-white text-slate-950 shadow"
-        )}"
-      >
+      <div class="${cn(cardVariants())}">
         <slot></slot>
       </div>
     `;
