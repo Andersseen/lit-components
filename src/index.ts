@@ -20,7 +20,7 @@ export * from "./components/menu/ui-menu-item";
 export * from "./components/menu/ui-menu-label";
 export * from "./components/menu/ui-menu-separator";
 export * from "./components/pagination/ui-pagination";
-export * from "./components/sidebar/ui-sidebar";
+export * from "./components/sidebar";
 export * from "./components/badge/ui-badge";
 export * from "./components/switch/ui-switch";
 export * from "./components/toggle/ui-toggle";

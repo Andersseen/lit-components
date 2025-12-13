@@ -1,8 +1,21 @@
 @import "tailwindcss";
 
-@layer components {
-  :host {
-    display: block;
-    height: 100%;
-  }
+:host {
+  display: block;
+}
+
+/* Transición suave para el ancho del sidebar */
+.transition-width {
+  transition-property: width, min-width, max-width;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Utilidad para ocultar scrollbar visualmente pero permitir scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
