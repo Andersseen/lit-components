@@ -1,31 +1,33 @@
 @import "tailwindcss";
 
-:host,
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 :host {
-  /* Modal uses dialog logic, strictly it doesn't need display block if using showModal, 
-     but keeping it safe. */
-  display: contents;
+  display: contents; /* Allows the dialog to be positioned relative to the viewport easily */
 }
 
+/* Native dialog styling resets and overrides */
 dialog {
-  /* Using component classes from variant */
-  /* If we rely on classes from render(), we need to ensure they work. 
-       But dialog default styles need reset */
-  margin: auto; /* Native centering */
-  padding: 0;
-  color: inherit;
-  background: white;
-  border: none;
+  margin: 0; /* Remove native centering margin, we position via fixed/transform */
+  color: inherit; /* Inherit text color */
 }
 
-/* Animations and backdrop */
+/* Ensure hidden state is respected if not open */
+dialog:not([open]) {
+  display: none;
+}
+
+/* Backdrop styling */
 dialog::backdrop {
-  background: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8); /* bg-black/80 equivalent */
   backdrop-filter: blur(4px);
+  animation: fade-in 0.2s ease-out;
+}
+
+/* Simple fade-in animation for the backdrop */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

@@ -18,6 +18,7 @@ export class UiDrawerOverlay extends LitElement {
           "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
           isOpen ? "data-[state=open] block" : "data-[state=closed] hidden"
         )}"
+        ?hidden="${!isOpen}"
         @click=${() =>
           parent.dispatchEvent(
             new CustomEvent("drawer-close", { bubbles: true, composed: true })

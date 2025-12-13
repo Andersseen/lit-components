@@ -1,7 +1,8 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
 export const modalVariants = cva(
-  "backdrop:bg-black/80 backdrop:backdrop-blur-sm z-50 grid w-full max-w-lg gap-4 border border-slate-200 bg-white p-6 shadow-lg duration-200 rounded-lg sm:rounded-lg"
+  // Base styles for the dialog box itself
+  "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-slate-200 bg-white p-6 shadow-lg duration-200 rounded-lg sm:rounded-lg backdrop:bg-black/80 backdrop:backdrop-blur-sm"
 );
 
 export const modalHeaderVariants = cva(
@@ -18,6 +19,7 @@ export const modalFooterVariants = cva(
 
 export const modalDescriptionVariants = cva("text-sm text-slate-500");
 
+// Export types
 export type ModalVariants = VariantProps<typeof modalVariants>;
 export type ModalHeaderVariants = VariantProps<typeof modalHeaderVariants>;
 export type ModalTitleVariants = VariantProps<typeof modalTitleVariants>;

@@ -24,6 +24,7 @@ export class UiDrawerContent extends LitElement {
           drawerContentVariants({ side: this.side }),
           isOpen ? "data-[state=open] block" : "data-[state=closed] hidden"
         )}"
+        ?hidden="${!isOpen}"
       >
         <button
           type="button"
