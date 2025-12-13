@@ -2,6 +2,7 @@ import { LitElement, html, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { cn } from "../../utils";
 import tailwindStyles from "./sidebar.css?inline";
+import { sidebarVariants } from "./sidebar.variants";
 
 @customElement("ui-sidebar")
 export class UiSidebar extends LitElement {
@@ -35,7 +36,7 @@ export class UiSidebar extends LitElement {
       <div
         style="${styleVars}"
         class="${cn(
-          "group flex h-full flex-col border-r border-slate-200 bg-white text-slate-950 transition-width duration-300 ease-in-out",
+          sidebarVariants(),
           "w-[var(--sidebar-width)]" // Ancho dinámico
         )}"
         data-state="${this.collapsed ? "collapsed" : "expanded"}"

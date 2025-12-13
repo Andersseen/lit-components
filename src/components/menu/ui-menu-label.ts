@@ -1,6 +1,8 @@
 import { LitElement, html, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import tailwindStyles from "./menu.css?inline";
+import { cn } from "../../utils";
+import { menuLabelVariants } from "./menu.variants";
 
 const styles = unsafeCSS(tailwindStyles);
 
@@ -10,7 +12,7 @@ export class UiMenuLabel extends LitElement {
 
   render() {
     return html`
-      <div class="px-2 py-1.5 text-sm font-semibold text-slate-950">
+      <div class="${cn(menuLabelVariants())}">
         <slot></slot>
       </div>
     `;

@@ -2,6 +2,7 @@ import { LitElement, html, unsafeCSS, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { cn } from "../../utils";
 import tailwindStyles from "./sidebar.css?inline";
+import { sidebarMenuButtonVariants } from "./sidebar.variants";
 
 @customElement("ui-sidebar-menu-button")
 export class UiSidebarMenuButton extends LitElement {
@@ -45,13 +46,7 @@ export class UiSidebarMenuButton extends LitElement {
     return html`
       <a
         href="${this.href}"
-        class="${cn(
-          "flex w-full items-center rounded-md text-sm font-medium transition-colors duration-200 outline-none",
-          "hover:bg-slate-100 hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-slate-950",
-          this.isActive
-            ? "bg-slate-100 text-slate-900 shadow-sm" // Activo
-            : "text-slate-500 hover:text-slate-900" // Inactivo
-        )}"
+        class="${cn(sidebarMenuButtonVariants({ isActive: this.isActive }))}"
       >
         <slot></slot>
       </a>

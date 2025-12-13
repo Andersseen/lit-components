@@ -1,7 +1,8 @@
 import { LitElement, html, unsafeCSS } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
-import { cn } from "../../utils";
 import tailwindStyles from "./tooltip.css?inline";
+import "./ui-tooltip-trigger";
+import "./ui-tooltip-content";
 
 const styles = unsafeCSS(tailwindStyles);
 
@@ -58,47 +59,8 @@ export class UiTooltip extends LitElement {
   }
 }
 
-@customElement("ui-tooltip-trigger")
-export class UiTooltipTrigger extends LitElement {
-  static styles = [styles];
-
-  render() {
-    return html`<slot></slot>`;
-  }
-}
-
-@customElement("ui-tooltip-content")
-export class UiTooltipContent extends LitElement {
-  static styles = [styles];
-
-  render() {
-    const parent = this.closest("ui-tooltip") as UiTooltip;
-    const isOpen = parent && parent.open;
-
-    if (!parent) return html``;
-
-    return html`
-      <div
-        class="${cn(
-          "absolute z-50 overflow-hidden rounded-md border bg-slate-900 px-3 py-1.5 text-xs text-slate-50 animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 whitespace-nowrap shadow-md",
-          isOpen ? "block" : "hidden",
-          parent.side === "top" && "bottom-full left-1/2 -translate-x-1/2 mb-2",
-          parent.side === "bottom" && "top-full left-1/2 -translate-x-1/2 mt-2",
-          parent.side === "left" && "right-full top-1/2 -translate-y-1/2 mr-2",
-          parent.side === "right" && "left-full top-1/2 -translate-y-1/2 ml-2"
-        )}"
-        data-side="${parent.side}"
-      >
-        <slot></slot>
-      </div>
-    `;
-  }
-}
-
 declare global {
   interface HTMLElementTagNameMap {
     "ui-tooltip": UiTooltip;
-    "ui-tooltip-trigger": UiTooltipTrigger;
-    "ui-tooltip-content": UiTooltipContent;
   }
 }

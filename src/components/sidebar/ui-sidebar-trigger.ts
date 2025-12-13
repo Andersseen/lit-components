@@ -1,6 +1,8 @@
 import { LitElement, html, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import tailwindStyles from "./sidebar.css?inline";
+import { cn } from "../../utils";
+import { sidebarTriggerVariants } from "./sidebar.variants";
 import { UiSidebar } from "./ui-sidebar"; // Importamos tipo
 
 @customElement("ui-sidebar-trigger")
@@ -19,7 +21,7 @@ export class UiSidebarTrigger extends LitElement {
   render() {
     return html`
       <button
-        class="inline-flex h-8 w-8 items-center justify-center rounded-md text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition-colors cursor-pointer"
+        class="${cn(sidebarTriggerVariants())}"
         aria-label="Toggle Sidebar"
         @click="${this._handleClick}"
       >

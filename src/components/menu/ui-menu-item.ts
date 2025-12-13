@@ -2,6 +2,7 @@ import { LitElement, html, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import tailwindStyles from "./menu.css?inline";
 import { cn } from "../../utils";
+import { menuItemVariants } from "./menu.variants";
 
 const styles = unsafeCSS(tailwindStyles);
 
@@ -15,7 +16,7 @@ export class UiMenuItem extends LitElement {
     return html`
       <div
         class="${cn(
-          "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-slate-100 focus:bg-slate-100 focus:text-slate-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+          menuItemVariants(),
           this.disabled ? "pointer-events-none opacity-50" : "cursor-pointer"
         )}"
         ?data-disabled="${this.disabled}"

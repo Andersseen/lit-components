@@ -1,6 +1,8 @@
 import { LitElement, html, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import tailwindStyles from "./menu.css?inline";
+import { cn } from "../../utils";
+import { menuSeparatorVariants } from "./menu.variants";
 
 const styles = unsafeCSS(tailwindStyles);
 
@@ -9,6 +11,6 @@ export class UiMenuSeparator extends LitElement {
   static styles = [styles];
 
   render() {
-    return html` <div class="-mx-1 my-1 h-px bg-slate-100"></div> `;
+    return html` <div class="${cn(menuSeparatorVariants())}"></div> `;
   }
 }

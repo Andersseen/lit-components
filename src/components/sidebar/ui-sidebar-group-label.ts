@@ -1,6 +1,8 @@
 import { LitElement, html, unsafeCSS, css } from "lit";
 import { customElement } from "lit/decorators.js";
 import tailwindStyles from "./sidebar.css?inline";
+import { cn } from "../../utils";
+import { sidebarGroupLabelVariants } from "./sidebar.variants";
 
 @customElement("ui-sidebar-group-label")
 export class UiSidebarGroupLabel extends LitElement {
@@ -15,9 +17,7 @@ export class UiSidebarGroupLabel extends LitElement {
 
   render() {
     return html`
-      <div
-        class="px-2 py-1.5 text-xs font-semibold text-slate-500 whitespace-nowrap overflow-hidden"
-      >
+      <div class="${cn(sidebarGroupLabelVariants())}">
         <slot></slot>
       </div>
     `;

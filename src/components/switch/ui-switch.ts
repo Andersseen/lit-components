@@ -2,6 +2,7 @@ import { LitElement, html, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { cn } from "../../utils";
 import tailwindStyles from "./switch.css?inline";
+import { switchVariants, switchThumbVariants } from "./switch.variants";
 
 const styles = unsafeCSS(tailwindStyles);
 
@@ -35,23 +36,10 @@ export class UiSwitch extends LitElement {
         aria-checked="${this.checked}"
         ?disabled="${this.disabled}"
         @click="${this._handleClick}"
-        class="${cn(
-          // Base Layout & Animation
-          "peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50",
-
-          // COLORES FIJOS (Fix visual): Slate-900 para activo, Slate-200 para inactivo
-          this.checked ? "bg-slate-900" : "bg-slate-200"
-        )}"
+        class="${cn(switchVariants({ checked: this.checked }))}"
       >
         <span
-          class="${cn(
-            // Thumb (Bolita): Blanca con sombra
-            "pointer-events-none block h-5 w-5 rounded-full bg-white shadow-lg ring-0 transition-transform",
-
-            // Translación: Tailwind h-5 es 20px. El track es w-11 (44px).
-            // 44px - 4px (bordes) - 20px (thumb) = 20px de viaje.
-            this.checked ? "translate-x-5" : "translate-x-0"
-          )}"
+          class="${cn(switchThumbVariants({ checked: this.checked }))}"
         ></span>
       </button>
     `;

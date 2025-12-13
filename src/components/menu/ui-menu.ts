@@ -1,6 +1,8 @@
 import { LitElement, html, unsafeCSS } from "lit";
 import { customElement } from "lit/decorators.js";
 import tailwindStyles from "./menu.css?inline";
+import { cn } from "../../utils";
+import { menuVariants } from "./menu.variants";
 
 const styles = unsafeCSS(tailwindStyles);
 
@@ -10,9 +12,7 @@ export class UiMenu extends LitElement {
 
   render() {
     return html`
-      <div
-        class="min-w-[8rem] overflow-hidden rounded-md border p-1 text-slate-950 shadow-sm bg-white"
-      >
+      <div class="${cn(menuVariants())}">
         <slot></slot>
       </div>
     `;

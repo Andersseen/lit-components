@@ -1,6 +1,8 @@
 import { LitElement, html, unsafeCSS, css } from "lit";
 import { customElement } from "lit/decorators.js";
 import tailwindStyles from "./sidebar.css?inline";
+import { cn } from "../../utils";
+import { sidebarHeaderVariants } from "./sidebar.variants";
 
 @customElement("ui-sidebar-header")
 export class UiSidebarHeader extends LitElement {
@@ -20,7 +22,7 @@ export class UiSidebarHeader extends LitElement {
 
   render() {
     return html`
-      <div class="flex h-14 items-center px-4 border-b border-slate-100">
+      <div class="${cn(sidebarHeaderVariants())}">
         <slot></slot>
       </div>
     `;
