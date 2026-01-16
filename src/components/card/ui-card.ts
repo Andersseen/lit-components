@@ -1,19 +1,17 @@
-import { LitElement, html, unsafeCSS } from "lit";
+import { LitElement, html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { cn } from "../../utils";
-import tailwindStyles from "./card.css?inline";
 import { cardVariants } from "./card.variants";
+import { tailwindStyles } from "../../styles/shared";
 import type { UiCardContent } from "./ui-card-content";
 import type { UiCardHeader } from "./ui-card-header";
 import type { UiCardTitle } from "./ui-card-title";
 import type { UiCardDescription } from "./ui-card-description";
 import type { UiCardFooter } from "./ui-card-footer";
 
-const styles = unsafeCSS(tailwindStyles);
-
 @customElement("ui-card")
 export class UiCard extends LitElement {
-  static styles = [styles];
+  static styles = [tailwindStyles];
 
   render() {
     return html`

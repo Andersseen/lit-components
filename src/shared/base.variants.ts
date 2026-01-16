@@ -18,45 +18,45 @@ const createColorVariant = (
   border,
 });
 
-// Using Slate/Zinc palette for shadcn feel
+// Using Semantic Theme palette
 export const primaryColor = createColorVariant(
-  "bg-slate-900 text-slate-50 shadow hover:bg-slate-900/90",
-  "hover:bg-slate-800",
-  "active:bg-slate-950",
+  "bg-primary text-primary-foreground shadow",
+  "hover:bg-primary/90",
+  "active:scale-[0.98]",
   ""
 );
 
 export const successColor = createColorVariant(
-  "bg-emerald-500 text-white shadow-sm hover:bg-emerald-500/90",
-  "hover:bg-emerald-600",
-  "active:bg-emerald-700",
-  "border-emerald-600"
+  "bg-success text-success-foreground shadow-sm",
+  "hover:bg-success/90",
+  "active:scale-[0.98]",
+  "border-success"
 );
 
 export const errorColor = createColorVariant(
-  "bg-red-500 text-white shadow-sm hover:bg-red-500/90",
-  "hover:bg-red-600",
-  "active:bg-red-700",
-  "border-red-600"
+  "bg-destructive text-destructive-foreground shadow-sm",
+  "hover:bg-destructive/90",
+  "active:scale-[0.98]",
+  "border-destructive"
 );
 
 export const warningColor = createColorVariant(
-  "bg-amber-500 text-white shadow-sm hover:bg-amber-500/90",
-  "hover:bg-amber-600",
-  "active:bg-amber-700",
-  "border-amber-600"
+  "bg-warning text-warning-foreground shadow-sm",
+  "hover:bg-warning/90",
+  "active:scale-[0.98]",
+  "border-warning"
 );
 
 export const infoColor = createColorVariant(
-  "bg-blue-500 text-white shadow-sm hover:bg-blue-500/90",
-  "hover:bg-blue-600",
-  "active:bg-blue-700",
-  "border-blue-600"
+  "bg-info text-info-foreground shadow-sm",
+  "hover:bg-info/90",
+  "active:scale-[0.98]",
+  "border-info"
 );
 
 export const secondaryColor = createColorVariant(
-  "bg-slate-100 text-slate-900 shadow-sm hover:bg-slate-100/80",
-  "hover:bg-slate-200",
-  "active:bg-slate-300",
-  "border-slate-200"
+  "bg-secondary text-secondary-foreground shadow-sm",
+  "hover:bg-secondary/80",
+  "active:scale-[0.98]",
+  "border-secondary"
 );

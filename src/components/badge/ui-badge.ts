@@ -1,12 +1,19 @@
-import { LitElement, html, unsafeCSS } from "lit";
+import { LitElement, html, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { cn } from "../../utils";
-import tailwindStyles from "./badge.css?inline";
 import { badgeVariants, type BadgeVariants } from "./badge.variants";
+import { tailwindStyles } from "../../styles/shared";
 
 @customElement("ui-badge")
 export class UiBadge extends LitElement {
-  static styles = [unsafeCSS(tailwindStyles)];
+  static styles = [
+    tailwindStyles,
+    css`
+      :host {
+        display: inline-flex;
+      }
+    `,
+  ];
 
   @property() variant: BadgeVariants["variant"] = "default";
 

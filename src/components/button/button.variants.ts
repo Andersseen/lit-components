@@ -14,7 +14,7 @@ export const buttonVariants = cva(
   [
     baseCvaClass,
     baseCvaAnimation,
-    "min-w-max flex items-center overflow-hidden relative text-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
+    "inline-flex items-center justify-center relative font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
   ],
   {
     variants: {
@@ -50,9 +50,9 @@ export const buttonVariants = cva(
           secondaryColor.border,
         ],
         outline:
-          "border bg-transparent border-slate-200 text-slate-900 hover:bg-slate-100", // Adjusted mock for outline
-        ghost: "hover:bg-slate-100 hover:text-slate-900", // Adjusted mock for ghost
-        link: "text-slate-900 underline-offset-4 hover:underline", // Adjusted mock for link
+          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
         sm: "h-9 px-3 text-xs",
