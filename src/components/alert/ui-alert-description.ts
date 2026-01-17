@@ -1,14 +1,13 @@
-import { LitElement, html, css, unsafeCSS } from "lit";
+import { LitElement, html, css } from "lit";
 import { customElement } from "lit/decorators.js";
 import { cn } from "../../utils";
-import tailwindStyles from "./alert.css?inline";
+import { tailwindStyles } from "../../styles/shared";
 
 @customElement("ui-alert-description")
 export class UiAlertDescription extends LitElement {
   static styles = [
-    unsafeCSS(tailwindStyles),
+    tailwindStyles,
     css`
-      /* OBLIGATORIO: Convierte el componente en una caja real */
       :host {
         display: block;
       }

@@ -17,4 +17,5 @@ export * from "./components/badge";
 export * from "./components/switch";
 export * from "./components/toggle";
 export * from "./components/carousel";
+export * from "./components/icon";
 export * from "./utils";
