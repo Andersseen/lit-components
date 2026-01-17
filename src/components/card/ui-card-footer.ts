@@ -1,12 +1,12 @@
-import { LitElement, html, unsafeCSS } from "lit";
+import { LitElement, html } from "lit";
 import { customElement } from "lit/decorators.js";
 import { cn } from "../../utils";
-import tailwindStyles from "./card.css?inline";
+import { tailwindStyles } from "../../styles/shared";
 import { cardFooterVariants } from "./card.variants";
 
 @customElement("ui-card-footer")
 export class UiCardFooter extends LitElement {
-  static styles = [unsafeCSS(tailwindStyles)];
+  static styles = [tailwindStyles];
 
   render() {
     return html`
