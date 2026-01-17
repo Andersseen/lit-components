@@ -17,6 +17,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && tsc --declaration --emitDeclarationOnly --outDir dist",
+    "build:app": "tsc && vite build --mode app",
     "preview": "vite preview",
     "prepublishOnly": "npm run build"
   },
