@@ -31,6 +31,7 @@ export class AppRoot extends LitElement {
     css`
       :host {
         display: flex;
+        flex-direction: column;
         height: 100vh;
         overflow: hidden;
         background-color: var(--background);
@@ -58,70 +59,89 @@ export class AppRoot extends LitElement {
     this.activeRoute = hash || "home";
   };
 
+  private get isComponentRoute() {
+    return !["home", "icons"].includes(this.activeRoute);
+  }
+
   render() {
     return html`
-      <!-- Sidebar -->
-      <ui-sidebar class="hidden md:block w-64 border-r bg-card h-full">
-        <ui-sidebar-header>
-          <div class="flex items-center justify-between px-4 py-2">
-            <span class="font-bold text-lg">Lit Components</span>
-          </div>
-        </ui-sidebar-header>
-        <ui-sidebar-content>
-          <ui-sidebar-menu>
-            <ui-sidebar-group>
-              <ui-sidebar-group-label>Getting Started</ui-sidebar-group-label>
-              <ui-sidebar-menu-item>
-                <ui-sidebar-menu-button
-                  href="#home"
-                  ?isActive=${this.activeRoute === "home"}
-                >
-                  Introduction
-                </ui-sidebar-menu-button>
-              </ui-sidebar-menu-item>
+      <!-- Top Navbar -->
+      <ui-navbar>
+        <ui-navbar-brand href="#home">Lit Components</ui-navbar-brand>
+        <ui-navbar-content>
+          <a
+            href="#home"
+            class="text-sm font-medium transition-colors hover:text-primary ${this
+              .activeRoute === "home"
+              ? "text-primary"
+              : "text-muted-foreground"}"
+          >
+            Home
+          </a>
+          <a
+            href="#icons"
+            class="text-sm font-medium transition-colors hover:text-primary ${this
+              .activeRoute === "icons"
+              ? "text-primary"
+              : "text-muted-foreground"}"
+          >
+            Icons
+          </a>
+          <a
+            href="#buttons"
+            class="text-sm font-medium transition-colors hover:text-primary ${this
+              .isComponentRoute
+              ? "text-primary"
+              : "text-muted-foreground"}"
+          >
+            Components
+          </a>
+        </ui-navbar-content>
+      </ui-navbar>
 
-              <ui-sidebar-group-label>Foundations</ui-sidebar-group-label>
-              <ui-sidebar-menu-item>
-                <ui-sidebar-menu-button
-                  href="#icons"
-                  ?isActive=${this.activeRoute === "icons"}
-                >
-                  Icons
-                </ui-sidebar-menu-button>
-              </ui-sidebar-menu-item>
+      <div class="flex flex-1 overflow-hidden">
+        <!-- Sidebar (Conditional) -->
+        ${this.isComponentRoute
+          ? html`
+              <ui-sidebar class="hidden md:block w-64 border-r bg-card h-full">
+                <ui-sidebar-content>
+                  <ui-sidebar-menu>
+                    <ui-sidebar-group>
+                      <ui-sidebar-group-label
+                        >Components</ui-sidebar-group-label
+                      >
+                      ${this.renderSidebarLink("Accordion", "accordion")}
+                      ${this.renderSidebarLink("Alert", "alert")}
+                      ${this.renderSidebarLink("Badge", "badge")}
+                      ${this.renderSidebarLink("Breadcrumb", "breadcrumb")}
+                      ${this.renderSidebarLink("Buttons", "buttons")}
+                      ${this.renderSidebarLink("Cards", "cards")}
+                      ${this.renderSidebarLink("Carousel", "carousel")}
+                      ${this.renderSidebarLink("Drawer", "drawer")}
+                      ${this.renderSidebarLink("Dropdown", "dropdown")}
+                      ${this.renderSidebarLink("Menu", "menu")}
+                      ${this.renderSidebarLink("Modal", "modal")}
+                      ${this.renderSidebarLink("Pagination", "pagination")}
+                      ${this.renderSidebarLink("Switch", "switch")}
+                      ${this.renderSidebarLink("Tabs", "tabs")}
+                      ${this.renderSidebarLink("Toast", "toast")}
+                      ${this.renderSidebarLink("Toggle", "toggle")}
+                      ${this.renderSidebarLink("Tooltip", "tooltip")}
+                    </ui-sidebar-group>
+                  </ui-sidebar-menu>
+                </ui-sidebar-content>
+                <ui-sidebar-footer class="p-4 border-t">
+                  <div class="text-xs text-muted-foreground">v0.1.0</div>
+                </ui-sidebar-footer>
+              </ui-sidebar>
+            `
+          : ""}
 
-              <ui-sidebar-group-label>Components</ui-sidebar-group-label>
-              ${this.renderSidebarLink("Accordion", "accordion")}
-              ${this.renderSidebarLink("Alert", "alert")}
-              ${this.renderSidebarLink("Badge", "badge")}
-              ${this.renderSidebarLink("Breadcrumb", "breadcrumb")}
-              ${this.renderSidebarLink("Buttons", "buttons")}
-              ${this.renderSidebarLink("Cards", "cards")}
-              ${this.renderSidebarLink("Carousel", "carousel")}
-              ${this.renderSidebarLink("Drawer", "drawer")}
-              ${this.renderSidebarLink("Dropdown", "dropdown")}
-              ${this.renderSidebarLink("Menu", "menu")}
-              ${this.renderSidebarLink("Modal", "modal")}
-              ${this.renderSidebarLink("Navbar", "navbar")}
-              ${this.renderSidebarLink("Pagination", "pagination")}
-              ${this.renderSidebarLink("Sidebar", "sidebar")}
-              ${this.renderSidebarLink("Switch", "switch")}
-              ${this.renderSidebarLink("Tabs", "tabs")}
-              ${this.renderSidebarLink("Toast", "toast")}
-              ${this.renderSidebarLink("Toggle", "toggle")}
-              ${this.renderSidebarLink("Tooltip", "tooltip")}
-            </ui-sidebar-group>
-          </ui-sidebar-menu>
-        </ui-sidebar-content>
-        <ui-sidebar-footer class="p-4 border-t">
-          <div class="text-xs text-muted-foreground">v0.1.0</div>
-        </ui-sidebar-footer>
-      </ui-sidebar>
-
-      <!-- Main Content -->
-      <main class="flex-1 overflow-auto p-8 relative">
-        <div class="max-w-5xl mx-auto">${this.renderPage()}</div>
-      </main>
+        <!-- Main Content -->
+        <main class="flex-1 overflow-auto p-8 relative">
+          <div class="max-w-5xl mx-auto">${this.renderPage()}</div>
+        </main>
+      </div>
 
       <ui-toaster></ui-toaster>
     `;
@@ -185,6 +205,8 @@ export class AppRoot extends LitElement {
       case "tooltip":
         return html`<tooltip-demo></tooltip-demo>`;
       default:
+        // Identify if it's a component route that might have missed a case, or truly 404
+        // For now, simple 404
         return html`<div class="p-4">Page not found</div>`;
     }
   }
