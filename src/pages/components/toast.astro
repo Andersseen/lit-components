@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { UiToaster } from '../../components/toast/ui-toaster';
+import { toast } from '../../components/toast/toast-registry';
+import { UiButton } from '../../components/button/ui-button';
+
+// We need a small client-side script to handle the toast trigger click
+// because passing functions from Astro frontmatter to client components is tricky.
+---
+
+<Layout title="Toast" showSidebar={true}>
+    <div class="space-y-8">
+        <div>
+          <h1 class="text-3xl font-bold tracking-tight">Toast</h1>
+          <p class="text-lg text-muted-foreground mt-2">
+            A succinct message that is displayed temporarily.
+          </p>
+        </div>
+
+        <section class="space-y-4">
+            <div class="p-6 border rounded-lg bg-card flex gap-4">
+              <UiButton client:only='lit'
+                variant="outline"
+                id="toast-trigger-default"
+                client:only="lit"
+              >
+                Add to Calendar
+              </UiButton>
+  
+              <UiButton client:only='lit'
+                  variant="destructive"
+                  id="toast-trigger-destructive"
+                  client:only="lit"
+              >
+                  Destructive
+              </UiButton>
+            </div>
+          </section>
+    </div>
+    
+    <UiToaster client:only='lit' client:only="lit" />
+
+    <script>
+        import { toast } from '../../components/toast';
+
+        document.getElementById('toast-trigger-default')?.addEventListener('click', () => {
+            toast({
+                title: "Scheduled: Catch up",
+                description: "Friday, February 10, 2023 at 5:57 PM",
+            });
+        });
+
+        document.getElementById('toast-trigger-destructive')?.addEventListener('click', () => {
+            toast({
+                title: "Uh oh! Something went wrong.",
+                description: "There was a problem with your request.",
+                variant: "destructive"
+            });
+        });
+    </script>
+</Layout>

@@ -1,0 +1,245 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { UiIcon } from '../components/icon/ui-icon';
+import { icons } from '../components/icon/icons';
+
+const iconNames = Object.keys(icons);
+
+const colors = [
+  { name: "Current", value: "currentColor", bg: "#334155" },
+  { name: "Blue", value: "oklch(0.593 0.179 246.382)", bg: "oklch(0.593 0.179 246.382)" },
+  { name: "Red", value: "oklch(0.577 0.245 27.325)", bg: "oklch(0.577 0.245 27.325)" },
+  { name: "Green", value: "oklch(0.627 0.194 149.214)", bg: "oklch(0.627 0.194 149.214)" },
+  { name: "Orange", value: "oklch(0.769 0.188 70.08)", bg: "oklch(0.769 0.188 70.08)" },
+];
+
+const sizeOptions = [
+  { label: "Small", value: 16 },
+  { label: "Medium", value: 24 },
+  { label: "Large", value: 32 },
+];
+---
+
+<Layout title="Icons" showSidebar={false}>
+  <div class="space-y-8">
+    <div>
+      <h1 class="text-3xl font-bold tracking-tight">Icons</h1>
+      <p class="text-lg text-muted-foreground mt-2">
+        A centralized icon registry. Contains {iconNames.length} icons.
+      </p>
+    </div>
+
+    <!-- Controls -->
+    <div class="grid gap-6 p-6 border rounded-lg bg-card text-card-foreground">
+      <div class="grid gap-2">
+        <label class="text-sm font-medium">Search</label>
+        <input
+          type="text"
+          id="search-input"
+          class="flex h-10 w-full max-w-sm rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          placeholder="Search icons..."
+        />
+      </div>
+
+      <div class="flex flex-wrap gap-8">
+        <!-- Style -->
+        <div class="grid gap-2">
+          <label class="text-sm font-medium">Style</label>
+          <div class="flex items-center gap-4">
+            <label class="flex items-center gap-2 text-sm cursor-pointer">
+              <input type="checkbox" id="filled-toggle" class="h-4 w-4 rounded border-primary text-primary focus:ring-primary" />
+              Filled
+            </label>
+
+            <label class="flex items-center gap-2 text-sm">
+              <span id="stroke-label">Width: 2.5px</span>
+              <input
+                type="range"
+                id="stroke-slider"
+                min="0.5"
+                max="4"
+                step="0.5"
+                value="2.5"
+                class="w-24 accent-primary"
+              />
+            </label>
+          </div>
+        </div>
+
+        <!-- Size -->
+        <div class="grid gap-2">
+          <label class="text-sm font-medium">Size</label>
+          <div class="flex gap-2" id="size-controls">
+            {sizeOptions.map((opt) => (
+              <button
+                class="size-btn px-3 py-1.5 text-sm rounded-md border transition-colors bg-background hover:bg-muted data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:border-primary"
+                data-value={opt.value}
+                data-active={opt.value === 24}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <!-- Color -->
+        <div class="grid gap-2">
+          <label class="text-sm font-medium">Color</label>
+          <div class="flex gap-2" id="color-controls">
+            {colors.map((c) => (
+              <button
+                class="color-btn w-8 h-8 rounded-full border-2 transition-transform hover:scale-110 border-transparent data-[active=true]:border-primary data-[active=true]:ring-2 data-[active=true]:ring-offset-2 data-[active=true]:ring-primary"
+                style={`background-color: ${c.bg}`}
+                title={c.name}
+                data-value={c.value}
+                data-active={c.value === 'currentColor'}
+              ></button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div id="icon-grid" class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
+        {iconNames.map((name) => (
+            <div
+                class="icon-item flex flex-col items-center justify-center p-4 gap-3 bg-card text-card-foreground border rounded-lg cursor-pointer hover:border-primary/50 hover:shadow-md transition-all active:scale-95"
+                data-name={name}
+            >
+                <div class="pointer-events-none">
+                     <UiIcon client:only="lit" name={name} class="transition-all" />
+                </div>
+                <span class="text-xs text-muted-foreground font-medium truncate w-full text-center select-none">{name}</span>
+            </div>
+        ))}
+    </div>
+
+    <!-- Usage -->
+    <div class="p-6 bg-muted rounded-lg border">
+      <h3 class="font-semibold mb-3">Usage</h3>
+      <div class="bg-card p-4 rounded-md font-mono text-sm overflow-x-auto text-card-foreground border">
+        <span class="text-blue-500">&lt;ui-icon</span> <br />
+        &nbsp;&nbsp;<span class="text-purple-500">name</span>=<span class="text-green-500" id="usage-name">"search"</span> <br />
+        &nbsp;&nbsp;<span class="text-purple-500">class</span>=<span class="text-green-500" id="usage-class">"text-foreground"</span> <br />
+        <span class="text-blue-500">&gt;&lt;/ui-icon&gt;</span>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+
+
+    // State
+    const state = {
+        search: '',
+        filled: false,
+        strokeWidth: 2.5,
+        size: 24,
+        color: 'currentColor',
+        selectedName: 'search'
+    };
+
+    // DOM Elements
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const filledToggle = document.getElementById('filled-toggle') as HTMLInputElement;
+    const strokeSlider = document.getElementById('stroke-slider') as HTMLInputElement;
+    const strokeLabel = document.getElementById('stroke-label');
+    const sizeBtns = document.querySelectorAll('.size-btn');
+    const colorBtns = document.querySelectorAll('.color-btn');
+    const iconGrid = document.getElementById('icon-grid');
+    const iconItems = document.querySelectorAll('.icon-item');
+    
+    // Usage Elements
+    const usageName = document.getElementById('usage-name');
+    const usageClass = document.getElementById('usage-class');
+
+    // Functions
+    function updateIcons() {
+        const icons = document.querySelectorAll('ui-icon');
+        icons.forEach(icon => {
+            // Because UiIcon is a lit component, we set properties directly
+            (icon as any).filled = state.filled;
+            (icon as any).strokeWidth = state.strokeWidth;
+            (icon as any).size = state.size;
+        });
+        
+        // Update Grid Color
+        if (iconGrid) {
+            iconGrid.style.color = state.color;
+        }
+
+        // Update Usage
+        if (usageName) usageName.textContent = `"${state.selectedName}"`;
+        if (usageClass) {
+             usageClass.textContent = state.color === 'currentColor' 
+                ? `"text-foreground"` 
+                : `"text-[${state.color}]"`; // Approximate tailwind arbitrary value representation
+        }
+    }
+
+    function filterIcons() {
+        const term = state.search.toLowerCase();
+        iconItems.forEach(item => {
+            const name = item.getAttribute('data-name')?.toLowerCase() || '';
+            const el = item as HTMLElement;
+            if (name.includes(term)) {
+                el.style.display = 'flex';
+            } else {
+                el.style.display = 'none';
+            }
+        });
+    }
+
+    // Event Listeners
+    searchInput?.addEventListener('input', (e) => {
+        state.search = (e.target as HTMLInputElement).value;
+        filterIcons();
+    });
+
+    filledToggle?.addEventListener('change', (e) => {
+        state.filled = (e.target as HTMLInputElement).checked;
+        updateIcons();
+    });
+
+    strokeSlider?.addEventListener('input', (e) => {
+        state.strokeWidth = parseFloat((e.target as HTMLInputElement).value);
+        if (strokeLabel) strokeLabel.textContent = `Width: ${state.strokeWidth}px`;
+        updateIcons();
+    });
+
+    sizeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            state.size = parseInt(btn.getAttribute('data-value') || '24');
+            // Update active state visuals
+            sizeBtns.forEach(b => b.setAttribute('data-active', 'false'));
+            btn.setAttribute('data-active', 'true');
+            updateIcons();
+        });
+    });
+
+    colorBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            state.color = btn.getAttribute('data-value') || 'currentColor';
+            // Update active state visuals
+            colorBtns.forEach(b => b.setAttribute('data-active', 'false'));
+            btn.setAttribute('data-active', 'true');
+            updateIcons();
+        });
+    });
+
+    // Delegate click for icon selection
+    iconItems.forEach(item => {
+        item.addEventListener('click', () => {
+            state.selectedName = item.getAttribute('data-name') || 'search';
+            updateIcons();
+        });
+    });
+
+    // Initial Filter
+    filterIcons();
+    // Initial Update (wait a tick for custom elements to upgrade if needed, though client:only helps)
+    setTimeout(updateIcons, 100);
+
+</script>

@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { UiAccordion, UiAccordionItem, UiAccordionTrigger, UiAccordionContent } from '../../components/accordion';
+---
+
+<Layout title="Accordion" showSidebar={true}>
+    <div class="space-y-8">
+        <div>
+          <h1 class="text-3xl font-bold tracking-tight">Accordion</h1>
+          <p class="text-lg text-muted-foreground mt-2">
+            A vertically stacked set of interactive headings that each reveal a section of content.
+          </p>
+        </div>
+
+        <section class="space-y-4">
+          <div class="p-6 border rounded-lg bg-card">
+            <UiAccordion client:only='lit' type="single" collapsible client:only="lit">
+              <UiAccordionItem client:only='lit' client:only="lit" value="item-1">
+                <UiAccordionTrigger client:only='lit' client:only="lit">Is it accessible?</UiAccordionTrigger>
+                <UiAccordionContent client:only='lit' client:only="lit">
+                  Yes. It adheres to the WAI-ARIA design pattern.
+                </UiAccordionContent>
+              </UiAccordionItem>
+
+              <UiAccordionItem client:only='lit' client:only="lit" value="item-2">
+                <UiAccordionTrigger client:only='lit' client:only="lit">Is it styled?</UiAccordionTrigger>
+                <UiAccordionContent client:only='lit' client:only="lit">
+                  Yes. It comes with default styles that matches the other components' aesthetic.
+                </UiAccordionContent>
+              </UiAccordionItem>
+
+              <UiAccordionItem client:only='lit' client:only="lit" value="item-3">
+                <UiAccordionTrigger client:only='lit' client:only="lit">Is it animated?</UiAccordionTrigger>
+                <UiAccordionContent client:only='lit' client:only="lit">
+                  Yes. It's animated by default, but you can disable it if you prefer.
+                </UiAccordionContent>
+              </UiAccordionItem>
+            </UiAccordion>
+          </div>
+        </section>
+    </div>
+</Layout>

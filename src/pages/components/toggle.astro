@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { UiToggle } from '../../components/toggle/ui-toggle';
+import { UiIcon } from '../../components/icon/ui-icon';
+---
+
+<Layout title="Toggle" showSidebar={true}>
+    <div class="space-y-8">
+        <div>
+          <h1 class="text-3xl font-bold tracking-tight">Toggle</h1>
+          <p class="text-lg text-muted-foreground mt-2">
+            A two-state button that can be either on or off.
+          </p>
+        </div>
+
+        <section class="space-y-4">
+            <div class="p-6 border rounded-lg bg-card flex gap-4">
+              <UiToggle client:only='lit' aria-label="Toggle bold" client:only="lit">
+                <UiIcon client:only='lit' name="bold" class="size-4" client:only="lit"></UiIcon>
+              </UiToggle>
+  
+               <UiToggle client:only='lit' variant="outline" aria-label="Toggle italic" client:only="lit">
+                <UiIcon client:only='lit' name="italic" class="size-4" client:only="lit"></UiIcon>
+              </UiToggle>
+  
+               <UiToggle client:only='lit' size="lg" aria-label="Toggle large" client:only="lit">
+                <span class="font-semibold">Large</span>
+              </UiToggle>
+            </div>
+          </section>
+    </div>
+</Layout>

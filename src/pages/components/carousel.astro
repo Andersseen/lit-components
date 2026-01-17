@@ -1,0 +1,72 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { UiCarousel, UiCarouselContent, UiCarouselItem, UiCarouselPrevious, UiCarouselNext } from '../../components/carousel';
+import { UiCard, UiCardContent } from '../../components/card';
+---
+
+<Layout title="Carousel" showSidebar={true}>
+    <div class="space-y-8">
+        <div>
+          <h1 class="text-3xl font-bold tracking-tight">Carousel</h1>
+          <p class="text-lg text-muted-foreground mt-2">
+            A carousel with motion and swipe support.
+          </p>
+        </div>
+
+        <section class="space-y-4">
+            <div class="p-6 border rounded-lg bg-card flex justify-center">
+              <UiCarousel client:only='lit' class="w-full max-w-xs" client:only="lit">
+                <UiCarouselContent client:only='lit'>
+                    <UiCarouselItem client:only='lit'>
+                        <div class="p-1">
+                          <UiCard client:only='lit'>
+                            <UiCardContent client:only='lit' class="flex aspect-square items-center justify-center p-6">
+                              <span class="text-4xl font-semibold">1</span>
+                            </UiCardContent>
+                          </UiCard>
+                        </div>
+                    </UiCarouselItem>
+                    <UiCarouselItem client:only='lit'>
+                        <div class="p-1">
+                          <UiCard client:only='lit'>
+                            <UiCardContent client:only='lit' class="flex aspect-square items-center justify-center p-6">
+                              <span class="text-4xl font-semibold">2</span>
+                            </UiCardContent>
+                          </UiCard>
+                        </div>
+                    </UiCarouselItem>
+                    <UiCarouselItem client:only='lit'>
+                        <div class="p-1">
+                          <UiCard client:only='lit'>
+                            <UiCardContent client:only='lit' class="flex aspect-square items-center justify-center p-6">
+                              <span class="text-4xl font-semibold">3</span>
+                            </UiCardContent>
+                          </UiCard>
+                        </div>
+                    </UiCarouselItem>
+                    <UiCarouselItem client:only='lit'>
+                        <div class="p-1">
+                          <UiCard client:only='lit'>
+                            <UiCardContent client:only='lit' class="flex aspect-square items-center justify-center p-6">
+                              <span class="text-4xl font-semibold">4</span>
+                            </UiCardContent>
+                          </UiCard>
+                        </div>
+                    </UiCarouselItem>
+                    <UiCarouselItem client:only='lit'>
+                        <div class="p-1">
+                          <UiCard client:only='lit'>
+                            <UiCardContent client:only='lit' class="flex aspect-square items-center justify-center p-6">
+                              <span class="text-4xl font-semibold">5</span>
+                            </UiCardContent>
+                          </UiCard>
+                        </div>
+                    </UiCarouselItem>
+                </UiCarouselContent>
+                <UiCarouselPrevious client:only='lit'></UiCarouselPrevious>
+                <UiCarouselNext client:only='lit'></UiCarouselNext>
+              </UiCarousel>
+            </div>
+          </section>
+    </div>
+</Layout>
