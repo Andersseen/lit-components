@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Lit Components - Home" showSidebar={false}>
+	<div class="py-12 space-y-6">
+        <h1 class="text-4xl font-bold tracking-tight">Introduction</h1>
+        <p class="text-xl text-muted-foreground">
+            A lightweight, customizable component library built with Lit and Tailwind CSS.
+        </p>
+        
+        <div class="prose dark:prose-invert max-w-none">
+            <p>
+                This library provides a set of reusable UI components that can be used in any web project. 
+                They are built as standard Web Components, making them compatible with React, Vue, Svelte, Angular, or vanilla HTML/JS.
+            </p>
+            
+            <h2>Features</h2>
+            <ul class="list-disc pl-6 space-y-2">
+                <li>Built with <strong>Lit</strong> for performance and standard compliance.</li>
+                <li>Styled with <strong>Tailwind CSS</strong> for easy customization.</li>
+                <li><strong>Accessible</strong> WAI-ARIA compliant patterns.</li>
+                <li><strong>Lightweight</strong> with minimal dependencies.</li>
+                <li><strong>Framework Agnostic</strong> works everywhere.</li>
+            </ul>
+
+            <div class="mt-8 flex gap-4">
+                <a href="/components/button" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
+                    Browse Components
+                </a>
+                <a href="https://github.com/your-repo/lit-components" class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+</Layout>

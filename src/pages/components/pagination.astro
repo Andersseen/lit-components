@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { UiPagination, UiPaginationContent, UiPaginationItem, UiPaginationPrevious, UiPaginationLink, UiPaginationEllipsis, UiPaginationNext } from '../../components/pagination';
+---
+
+<Layout title="Pagination" showSidebar={true}>
+    <div class="space-y-8">
+        <div>
+          <h1 class="text-3xl font-bold tracking-tight">Pagination</h1>
+          <p class="text-lg text-muted-foreground mt-2">
+            Pagination with page navigation, next and previous links.
+          </p>
+        </div>
+
+        <section class="space-y-4">
+            <div class="p-6 border rounded-lg bg-card">
+              <UiPagination client:only='lit' client:only="lit">
+                <UiPaginationContent client:only='lit'>
+                  <UiPaginationItem client:only='lit'>
+                    <UiPaginationPrevious client:only='lit' href="#"></UiPaginationPrevious>
+                  </UiPaginationItem>
+                  <UiPaginationItem client:only='lit'>
+                    <UiPaginationLink client:only='lit' href="#" isActive>1</UiPaginationLink>
+                  </UiPaginationItem>
+                  <UiPaginationItem client:only='lit'>
+                    <UiPaginationLink client:only='lit' href="#">2</UiPaginationLink>
+                  </UiPaginationItem>
+                  <UiPaginationItem client:only='lit'>
+                    <UiPaginationLink client:only='lit' href="#">3</UiPaginationLink>
+                  </UiPaginationItem>
+                  <UiPaginationItem client:only='lit'>
+                    <UiPaginationEllipsis client:only='lit'></UiPaginationEllipsis>
+                  </UiPaginationItem>
+                  <UiPaginationItem client:only='lit'>
+                    <UiPaginationNext client:only='lit' href="#"></UiPaginationNext>
+                  </UiPaginationItem>
+                </UiPaginationContent>
+              </UiPagination>
+            </div>
+          </section>
+    </div>
+</Layout>

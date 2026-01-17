@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { UiAlert, UiAlertTitle, UiAlertDescription } from '../../components/alert';
+import { UiIcon } from '../../components/icon/ui-icon';
+---
+
+<Layout title="Alert" showSidebar={true}>
+    <div class="space-y-8">
+        <div>
+          <h1 class="text-3xl font-bold tracking-tight">Alert</h1>
+          <p class="text-lg text-muted-foreground mt-2">
+            Displays a callout for user attention.
+          </p>
+        </div>
+
+        <section class="space-y-4">
+            <h2 class="text-xl font-semibold">Default</h2>
+            <div class="p-6 border rounded-lg bg-card text-foreground">
+              <UiAlert client:only='lit' client:only="lit">
+                <UiIcon client:only='lit' name="circle-alert" class="size-4" client:only="lit"></UiIcon>
+                <UiAlertTitle client:only='lit'>Heads up!</UiAlertTitle>
+                <UiAlertDescription client:only='lit'>
+                  You can add components to your app using the cli.
+                </UiAlertDescription>
+              </UiAlert>
+            </div>
+          </section>
+  
+          <section class="space-y-4">
+            <h2 class="text-xl font-semibold">Destructive</h2>
+            <div class="p-6 border rounded-lg bg-card">
+              <UiAlert client:only='lit' variant="destructive" client:only="lit">
+                <UiIcon client:only='lit' name="circle-alert" class="size-4" client:only="lit"></UiIcon>
+                <UiAlertTitle client:only='lit'>Error</UiAlertTitle>
+                <UiAlertDescription client:only='lit'>
+                  Your session has expired. Please log in again.
+                </UiAlertDescription>
+              </UiAlert>
+            </div>
+          </section>
+    </div>
+</Layout>

@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { UiBadge } from '../../components/badge/ui-badge';
+---
+
+<Layout title="Badge" showSidebar={true}>
+    <div class="space-y-8">
+        <div>
+          <h1 class="text-3xl font-bold tracking-tight">Badge</h1>
+          <p class="text-lg text-muted-foreground mt-2">
+            Displays a badge or a component that looks like a badge.
+          </p>
+        </div>
+
+        <section class="space-y-4">
+            <h2 class="text-xl font-semibold">Variants</h2>
+            <div class="flex flex-wrap gap-4 p-6 border rounded-lg bg-card">
+              <UiBadge client:only='lit' client:only="lit">Default</UiBadge>
+              <UiBadge client:only='lit' variant="secondary" client:only="lit">Secondary</UiBadge>
+              <UiBadge client:only='lit' variant="outline" client:only="lit">Outline</UiBadge>
+              <UiBadge client:only='lit' variant="destructive" client:only="lit">Destructive</UiBadge>
+            </div>
+          </section>
+    </div>
+</Layout>

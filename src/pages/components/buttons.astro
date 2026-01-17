@@ -1,0 +1,56 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { UiButton } from '../../components/button/ui-button';
+import { UiIcon } from '../../components/icon/ui-icon';
+---
+
+<Layout title="Buttons" showSidebar={true}>
+    <div class="space-y-8">
+        <div>
+          <h1 class="text-3xl font-bold tracking-tight">Buttons</h1>
+          <p class="text-lg text-muted-foreground mt-2">
+            Displays a button or a component that looks like a button.
+          </p>
+        </div>
+
+        <section class="space-y-4">
+          <h2 class="text-xl font-semibold">Variants</h2>
+          <div class="flex flex-wrap gap-4 p-6 border rounded-lg bg-card">
+            <UiButton client:only='lit' variant="primary" client:only="lit">Primary</UiButton>
+            <UiButton client:only='lit' variant="secondary" client:only="lit">Secondary</UiButton>
+            <UiButton client:only='lit' variant="outline" client:only="lit">Outline</UiButton>
+            <UiButton client:only='lit' variant="ghost" client:only="lit">Ghost</UiButton>
+            <UiButton client:only='lit' variant="destructive" client:only="lit">Destructive</UiButton>
+            <UiButton client:only='lit' variant="link" client:only="lit">Link</UiButton>
+          </div>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-xl font-semibold">Sizes</h2>
+          <div class="flex flex-wrap items-center gap-4 p-6 border rounded-lg bg-card">
+            <UiButton client:only='lit' size="sm" client:only="lit">Small</UiButton>
+            <UiButton client:only='lit' size="md" client:only="lit">Medium</UiButton>
+            <UiButton client:only='lit' size="lg" client:only="lit">Large</UiButton>
+            <UiButton client:only='lit' size="icon" variant="outline" client:only="lit">
+              <UiIcon client:only='lit' name="arrow-right" client:only="lit"></UiIcon>
+            </UiButton>
+          </div>
+        </section>
+
+        <section class="space-y-4">
+            <h2 class="text-xl font-semibold">States</h2>
+            <div class="flex flex-wrap gap-4 p-6 border rounded-lg bg-card">
+              <UiButton client:only='lit' disabled client:only="lit">Disabled</UiButton>
+              <UiButton client:only='lit' loading client:only="lit">Loading</UiButton>
+            </div>
+          </section>
+  
+          <section class="space-y-4">
+            <h2 class="text-xl font-semibold">With Icons</h2>
+            <div class="flex flex-wrap gap-4 p-6 border rounded-lg bg-card">
+              <UiButton client:only='lit' iconLeft="check" client:only="lit">Save</UiButton>
+              <UiButton client:only='lit' iconRight="arrow-right" variant="outline" client:only="lit">Next Step</UiButton>
+            </div>
+          </section>
+    </div>
+</Layout>

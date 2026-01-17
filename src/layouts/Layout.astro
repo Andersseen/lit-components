@@ -1,0 +1,129 @@
+---
+import { UiNavbar } from "../components/navbar/ui-navbar";
+import { UiNavbarBrand } from "../components/navbar/ui-navbar-brand";
+import { UiNavbarContent } from "../components/navbar/ui-navbar-content";
+import {
+UiSidebar,
+UiSidebarContent,
+UiSidebarFooter,
+UiSidebarGroup,
+UiSidebarGroupLabel,
+UiSidebarMenu,
+UiSidebarMenuButton,
+UiSidebarMenuItem
+} from "../components/sidebar";
+import "../globals.css";
+
+interface Props {
+  title: string;
+  showSidebar?: boolean;
+}
+
+const { title, showSidebar = false } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+const isActive = (path: string) => currentPath === path || currentPath.startsWith(path + "/");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-background text-foreground font-sans min-h-screen flex flex-col overflow-x-hidden">
+    <UiNavbar client:only="lit">
+      <UiNavbarBrand client:only="lit" href="/">Lit Components</UiNavbarBrand>
+      <UiNavbarContent client:only="lit">
+        <a
+          href="/"
+          class={`text-sm font-medium transition-colors hover:text-primary ${
+            currentPath === "/" ? "text-primary" : "text-muted-foreground"
+          }`}
+        >
+          Home
+        </a>
+        <a
+          href="/icons"
+          class={`text-sm font-medium transition-colors hover:text-primary ${
+            isActive("/icons") ? "text-primary" : "text-muted-foreground"
+          }`}
+        >
+          Icons
+        </a>
+        <a
+          href="/components/buttons"
+          class={`text-sm font-medium transition-colors hover:text-primary ${
+            isActive("/components") ? "text-primary" : "text-muted-foreground"
+          }`}
+        >
+          Components
+        </a>
+      </UiNavbarContent>
+    </UiNavbar>
+
+    <div class="flex flex-1 overflow-hidden">
+      {
+        showSidebar && (
+          <UiSidebar client:only="lit" class="hidden md:block w-64 border-r bg-card h-full overflow-y-auto">
+            <UiSidebarContent client:only="lit">
+              <UiSidebarMenu client:only="lit">
+                <UiSidebarGroup client:only="lit">
+                  <UiSidebarGroupLabel client:only="lit">Components</UiSidebarGroupLabel>
+                  {/* List of components */}
+                  {[
+                    "Accordion",
+                    "Alert",
+                    "Badge",
+                    "Breadcrumb",
+                    "Buttons",
+                    "Cards",
+                    "Carousel",
+                    "Drawer",
+                    "Dropdown",
+                    "Menu",
+                    "Modal",
+                    "Pagination",
+                    "Switch",
+                    "Tabs",
+                    "Toast",
+                    "Toggle",
+                    "Tooltip",
+                  ].map((item) => {
+                     // Standardizing route names: /components/buttons, /components/cards etc.
+                     // The array was singular "Button", "Card" before, but routes were plural in the map logic I wrote previously?
+                     // Wait, in `buttons.astro` the file is plural.
+                     // Let's ensure the list matches the file names.
+                     // File names: buttons.astro, cards.astro, accordion.astro (singular), alert.astro (singular)...
+                     // Let's use the explicit map to avoid confusion.
+                     const key = item.toLowerCase();
+                     const route = `/components/${key}`;
+                     return (
+                      <UiSidebarMenuItem client:only="lit">
+                        <UiSidebarMenuButton client:only="lit" href={route} isActive={isActive(route)}>
+                          {item}
+                        </UiSidebarMenuButton>
+                      </UiSidebarMenuItem>
+                    );
+                  })}
+                </UiSidebarGroup>
+              </UiSidebarMenu>
+            </UiSidebarContent>
+            <UiSidebarFooter client:only="lit" class="p-4 border-t">
+              <div class="text-xs text-muted-foreground">v0.1.0</div>
+            </UiSidebarFooter>
+          </UiSidebar>
+        )
+      }
+
+      <main class="flex-1 w-full overflow-auto p-4 md:p-8 relative">
+        <div class="container mx-auto max-w-7xl">
+          <slot />
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

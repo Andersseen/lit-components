@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { UiDropdown, UiDropdownTrigger, UiDropdownContent, UiDropdownItem } from '../../components/dropdown';
+import { UiButton } from '../../components/button/ui-button';
+---
+
+<Layout title="Dropdown" showSidebar={true}>
+    <div class="space-y-8">
+        <div>
+          <h1 class="text-3xl font-bold tracking-tight">Dropdown Menu</h1>
+          <p class="text-lg text-muted-foreground mt-2">
+            Displays a menu to the user — such as a set of actions or functions — triggered by a button.
+          </p>
+        </div>
+
+        <section class="space-y-4">
+            <div class="p-6 border rounded-lg bg-card flex justify-center py-24">
+              <UiDropdown client:only='lit' client:only="lit">
+                <UiDropdownTrigger client:only='lit' asChild>
+                  <UiButton client:only='lit' variant="outline" client:only="lit">Open Menu</UiButton>
+                </UiDropdownTrigger>
+                <UiDropdownContent client:only='lit' align="end">
+                  <UiDropdownItem client:only='lit'>Profile</UiDropdownItem>
+                  <UiDropdownItem client:only='lit'>Billing</UiDropdownItem>
+                  <UiDropdownItem client:only='lit'>Team</UiDropdownItem>
+                  <UiDropdownItem client:only='lit'>Subscription</UiDropdownItem>
+                </UiDropdownContent>
+              </UiDropdown>
+            </div>
+          </section>
+    </div>
+</Layout>

@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { UiBreadcrumb, UiBreadcrumbItem, UiBreadcrumbSeparator } from '../../components/breadcrumb';
+---
+
+<Layout title="Breadcrumb" showSidebar={true}>
+    <div class="space-y-8">
+        <div>
+          <h1 class="text-3xl font-bold tracking-tight">Breadcrumb</h1>
+          <p class="text-lg text-muted-foreground mt-2">
+            Displays the path to the current resource using a hierarchy of links.
+          </p>
+        </div>
+
+        <section class="space-y-4">
+            <div class="p-6 border rounded-lg bg-card">
+              <UiBreadcrumb client:only='lit' client:only="lit">
+                <UiBreadcrumbItem client:only='lit' href="#">Home</UiBreadcrumbItem>
+                <UiBreadcrumbSeparator client:only='lit'></UiBreadcrumbSeparator>
+                <UiBreadcrumbItem client:only='lit' href="#">Components</UiBreadcrumbItem>
+                <UiBreadcrumbSeparator client:only='lit'></UiBreadcrumbSeparator>
+                <UiBreadcrumbItem client:only='lit'>Breadcrumb</UiBreadcrumbItem>
+              </UiBreadcrumb>
+            </div>
+          </section>
+    </div>
+</Layout>
