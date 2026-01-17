@@ -69,10 +69,8 @@ export class UiIcon extends LitElement {
   override ariaHidden: string | null = "true";
 
   render() {
-    let iconContent = "";
-
     if (this.src) {
-      iconContent = this.src;
+      // iconContent = this.src;
     } else if (this.name) {
       // Check if it's in the registry
       const registeredIcon = icons[this.name as IconName];
