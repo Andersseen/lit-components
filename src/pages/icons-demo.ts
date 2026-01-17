@@ -30,15 +30,15 @@ export class IconsDemo extends LitElement {
     // Icons namespace might contain other exports, we filter for strings (legacy SVG strings or Templates)
     // But checking Icons object structure:
     const allIcons = Object.entries(Icons).filter(
-      ([name, content]) =>
+      ([, content]) =>
         // Ensure we are only picking up icon exports, which are likely strings or TemplateResults.
         // Also filtering out potential module metadata if any.
         typeof content === "string" ||
-        (typeof content === "object" && content !== null)
+        (typeof content === "object" && content !== null),
     );
 
     const filteredIcons = allIcons.filter(([name]) =>
-      name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      name.toLowerCase().includes(this.searchQuery.toLowerCase()),
     );
 
     const colors = [
@@ -124,7 +124,7 @@ export class IconsDemo extends LitElement {
                     .value=${this.strokeWidth.toString()}
                     @input=${(e: Event) =>
                       (this.strokeWidth = parseFloat(
-                        (e.target as HTMLInputElement).value
+                        (e.target as HTMLInputElement).value,
                       ))}
                     class="w-24 accent-primary"
                   />
@@ -146,7 +146,7 @@ export class IconsDemo extends LitElement {
                     >
                       ${opt.label}
                     </button>
-                  `
+                  `,
                 )}
               </div>
             </div>
@@ -165,7 +165,7 @@ export class IconsDemo extends LitElement {
                       title="${c.name}"
                       @click=${() => (this.selectedColor = c.value)}
                     ></button>
-                  `
+                  `,
                 )}
               </div>
             </div>
@@ -196,7 +196,7 @@ export class IconsDemo extends LitElement {
                   >${getDisplayName(name)}</span
                 >
               </div>
-            `
+            `,
           )}
         </div>
 
