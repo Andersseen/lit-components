@@ -2,7 +2,6 @@ import { LitElement, html, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { cn } from "../../utils";
 import tailwindStyles from "./tooltip.css?inline";
-import { UiTooltip } from "./ui-tooltip";
 import { tooltipContentVariants } from "./tooltip.variants";
 
 @customElement("ui-tooltip-content")

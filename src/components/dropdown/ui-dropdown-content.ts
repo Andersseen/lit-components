@@ -1,7 +1,6 @@
 import { LitElement, html, unsafeCSS } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { cn } from "../../utils";
-import { UiDropdown } from "./ui-dropdown";
 import tailwindStyles from "./dropdown.css?inline";
 import { dropdownContentVariants } from "./dropdown.variants";
 
@@ -17,10 +16,7 @@ export class UiDropdownContent extends LitElement {
   render() {
     return html`
       <div
-        class="${cn(
-          dropdownContentVariants({ align: this.align }),
-          this.open ? "flex" : "hidden",
-        )}"
+        class="${cn(dropdownContentVariants(), this.open ? "flex" : "hidden")}"
       >
         <div class="py-1" role="none">
           <slot></slot>
