@@ -36,6 +36,27 @@ export class UiTooltip extends LitElement {
     this.requestUpdate();
   }
 
+  updated() {
+    this.syncContentState();
+  }
+
+  handleSlotChange() {
+    this.syncContentState();
+  }
+
+  private syncContentState() {
+    const content = this.querySelector("ui-tooltip-content");
+    if (content) {
+      if (this.open) {
+        content.setAttribute("open", "");
+      } else {
+        content.removeAttribute("open");
+      }
+      content.setAttribute("side", this.side);
+      (content as LitElement).requestUpdate();
+    }
+  }
+
   render() {
     return html`
       <div
@@ -45,17 +66,9 @@ export class UiTooltip extends LitElement {
         @focusin=${this.handleMouseEnter}
         @focusout=${this.handleMouseLeave}
       >
-        <slot></slot>
+        <slot @slotchange=${this.handleSlotChange}></slot>
       </div>
     `;
-  }
-
-  updated() {
-    // Notify content child
-    const content = this.querySelector("ui-tooltip-content");
-    if (content) {
-      (content as LitElement).requestUpdate();
-    }
   }
 }
 
