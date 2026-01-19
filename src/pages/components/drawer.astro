@@ -15,9 +15,9 @@ import { UiButton } from '../../components/button/ui-button';
 
         <section class="space-y-4">
             <div class="p-6 border rounded-lg bg-card flex justify-center">
-              <UiDrawer client:only='lit' client:only="lit">
+              <UiDrawer client:only='lit'>
                 <UiDrawerTrigger client:only='lit' asChild>
-                  <UiButton client:only='lit' variant="outline" client:only="lit">Open Drawer</UiButton>
+                  <UiButton client:only='lit' variant="outline">Open Drawer</UiButton>
                 </UiDrawerTrigger>
                 <UiDrawerContent client:only='lit'>
                   <UiDrawerHeader client:only='lit'>
@@ -34,9 +34,9 @@ import { UiButton } from '../../components/button/ui-button';
                       </div>
                   </div>
                   <UiDrawerFooter client:only='lit'>
-                    <UiButton client:only='lit' client:only="lit">Save changes</UiButton>
+                    <UiButton client:only='lit'>Save changes</UiButton>
                     <UiDrawerTrigger client:only='lit' asChild>
-                      <UiButton client:only='lit' variant="outline" client:only="lit">Cancel</UiButton>
+                      <UiButton client:only='lit' variant="outline">Cancel</UiButton>
                     </UiDrawerTrigger>
                   </UiDrawerFooter>
                 </UiDrawerContent>

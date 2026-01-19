@@ -16,7 +16,7 @@ import { UiButton } from '../../components/button/ui-button';
         <section class="space-y-4">
             <div class="flex flex-wrap gap-6">
                 <!-- Simple Card -->
-                <UiCard client:only='lit' class="w-[350px]" client:only="lit">
+                <UiCard client:only='lit' class="w-[350px]">
                     <UiCardHeader client:only='lit'>
                         <UiCardTitle client:only='lit'>Create project</UiCardTitle>
                         <UiCardDescription client:only='lit'>Deploy your new project in one-click.</UiCardDescription>
@@ -27,8 +27,8 @@ import { UiButton } from '../../components/button/ui-button';
                         </p>
                     </UiCardContent>
                     <UiCardFooter client:only='lit' class="flex justify-between">
-                        <UiButton client:only='lit' variant="outline" client:only="lit">Cancel</UiButton>
-                        <UiButton client:only='lit' client:only="lit">Deploy</UiButton>
+                        <UiButton client:only='lit' variant="outline">Cancel</UiButton>
+                        <UiButton client:only='lit'>Deploy</UiButton>
                     </UiCardFooter>
                 </UiCard>
             </div>

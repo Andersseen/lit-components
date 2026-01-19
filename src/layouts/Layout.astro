@@ -2,15 +2,19 @@
 import { UiNavbar } from "../components/navbar/ui-navbar";
 import { UiNavbarBrand } from "../components/navbar/ui-navbar-brand";
 import { UiNavbarContent } from "../components/navbar/ui-navbar-content";
+import { ClientRouter } from "astro:transitions";
+import { sidebarConfig } from "../config/navigation";
 import {
 UiSidebar,
 UiSidebarContent,
 UiSidebarFooter,
 UiSidebarGroup,
 UiSidebarGroupLabel,
+UiSidebarHeader,
 UiSidebarMenu,
 UiSidebarMenuButton,
-UiSidebarMenuItem
+UiSidebarMenuItem,
+UiSidebarTrigger
 } from "../components/sidebar";
 import "../globals.css";
 
@@ -33,6 +37,7 @@ const isActive = (path: string) => currentPath === path || currentPath.startsWit
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ClientRouter />
   </head>
   <body class="bg-background text-foreground font-sans min-h-screen flex flex-col overflow-x-hidden">
     <UiNavbar client:only="lit">
@@ -40,24 +45,24 @@ const isActive = (path: string) => currentPath === path || currentPath.startsWit
       <UiNavbarContent client:only="lit">
         <a
           href="/"
-          class={`text-sm font-medium transition-colors hover:text-primary ${
-            currentPath === "/" ? "text-primary" : "text-muted-foreground"
+          class={`text-base font-medium transition-colors hover:text-primary ${
+            currentPath === "/" ? "text-primary border-b-2 border-primary" : "text-muted-foreground"
           }`}
         >
           Home
         </a>
         <a
           href="/icons"
-          class={`text-sm font-medium transition-colors hover:text-primary ${
-            isActive("/icons") ? "text-primary" : "text-muted-foreground"
+          class={`text-base font-medium transition-colors hover:text-primary ${
+            isActive("/icons") ? "text-primary border-b-2 border-primary" : "text-muted-foreground"
           }`}
         >
           Icons
         </a>
         <a
           href="/components/buttons"
-          class={`text-sm font-medium transition-colors hover:text-primary ${
-            isActive("/components") ? "text-primary" : "text-muted-foreground"
+          class={`text-base font-medium transition-colors hover:text-primary ${
+            isActive("/components") ? "text-primary border-b-2 border-primary" : "text-muted-foreground"
           }`}
         >
           Components
@@ -68,52 +73,27 @@ const isActive = (path: string) => currentPath === path || currentPath.startsWit
     <div class="flex flex-1 overflow-hidden">
       {
         showSidebar && (
-          <UiSidebar client:only="lit" class="hidden md:block w-64 border-r bg-card h-full overflow-y-auto">
+          <UiSidebar client:only="lit" class="hidden md:block border-r bg-card h-full overflow-y-auto">
+             <UiSidebarHeader client:only="lit" class="flex h-16 items-center px-4 border-b border-border justify-between">
+                <span class="font-bold">Components</span>
+                <UiSidebarTrigger client:only="lit" />
+             </UiSidebarHeader>
             <UiSidebarContent client:only="lit">
               <UiSidebarMenu client:only="lit">
                 <UiSidebarGroup client:only="lit">
-                  <UiSidebarGroupLabel client:only="lit">Components</UiSidebarGroupLabel>
-                  {/* List of components */}
-                  {[
-                    "Accordion",
-                    "Alert",
-                    "Badge",
-                    "Breadcrumb",
-                    "Buttons",
-                    "Cards",
-                    "Carousel",
-                    "Drawer",
-                    "Dropdown",
-                    "Menu",
-                    "Modal",
-                    "Pagination",
-                    "Switch",
-                    "Tabs",
-                    "Toast",
-                    "Toggle",
-                    "Tooltip",
-                  ].map((item) => {
-                     // Standardizing route names: /components/buttons, /components/cards etc.
-                     // The array was singular "Button", "Card" before, but routes were plural in the map logic I wrote previously?
-                     // Wait, in `buttons.astro` the file is plural.
-                     // Let's ensure the list matches the file names.
-                     // File names: buttons.astro, cards.astro, accordion.astro (singular), alert.astro (singular)...
-                     // Let's use the explicit map to avoid confusion.
-                     const key = item.toLowerCase();
-                     const route = `/components/${key}`;
-                     return (
+                  <UiSidebarGroupLabel client:only="lit">Library</UiSidebarGroupLabel>
+                  {sidebarConfig.items.map((item) => (
                       <UiSidebarMenuItem client:only="lit">
-                        <UiSidebarMenuButton client:only="lit" href={route} isActive={isActive(route)}>
-                          {item}
+                        <UiSidebarMenuButton client:only="lit" href={item.href} isActive={isActive(item.href)} icon={item.icon}>
+                          {item.label}
                         </UiSidebarMenuButton>
                       </UiSidebarMenuItem>
-                    );
-                  })}
+                    ))}
                 </UiSidebarGroup>
               </UiSidebarMenu>
             </UiSidebarContent>
             <UiSidebarFooter client:only="lit" class="p-4 border-t">
-              <div class="text-xs text-muted-foreground">v0.1.0</div>
+              <div class="text-xs text-muted-foreground truncate">v0.1.0</div>
             </UiSidebarFooter>
           </UiSidebar>
         )

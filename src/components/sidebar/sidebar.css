@@ -2,6 +2,13 @@
 
 :host {
   display: block;
+  width: 16rem; /* Expanded width */
+  transition: width 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: width;
+}
+
+:host([collapsed]) {
+  width: 4.5rem; /* Collapsed width: icon (1rem) + padding (approx) */
 }
 
 /* Transición suave para el ancho del sidebar */

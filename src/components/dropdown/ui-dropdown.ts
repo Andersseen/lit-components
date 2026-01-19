@@ -39,22 +39,35 @@ export class UiDropdown extends LitElement {
     document.removeEventListener("click", this.handleOutsideClick);
   }
 
+  updated() {
+    this.syncContentState();
+  }
+
+  handleSlotChange() {
+    this.syncContentState();
+  }
+
+  private syncContentState() {
+    const content = this.querySelector("ui-dropdown-content");
+    if (content) {
+      if (this.open) {
+        content.setAttribute("open", "");
+      } else {
+        content.removeAttribute("open");
+      }
+      (content as LitElement).requestUpdate();
+    }
+  }
+
   render() {
     return html`
       <div
         class="relative inline-block text-left"
         @keyup=${(e: KeyboardEvent) => e.key === "Escape" && this.close()}
       >
-        <slot></slot>
+        <slot name="trigger"></slot>
+        <slot @slotchange=${this.handleSlotChange}></slot>
       </div>
     `;
-  }
-
-  updated() {
-    // Notify content child to re-render when open state changes
-    const content = this.querySelector("ui-dropdown-content");
-    if (content) {
-      (content as LitElement).requestUpdate();
-    }
   }
 }

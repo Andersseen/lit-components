@@ -60,10 +60,17 @@ export class UiModal extends LitElement {
     }
   }
 
+  private handleTriggerClick() {
+    this.open = true;
+  }
+
   render() {
-    // We removed the conditional 'open' class logic.
-    // The dialog is hidden by browser default until showModal() is called.
+    // We render the trigger OUTSIDE the dialog so it is visible when the dialog is closed.
     return html`
+      <div @click=${this.handleTriggerClick} class="inline-block">
+        <slot name="trigger"></slot>
+      </div>
+
       <dialog
         class="${cn(modalVariants())}"
         @click=${this.handleBackdropClick}

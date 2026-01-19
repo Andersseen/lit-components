@@ -1,6 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { UiDropdown, UiDropdownTrigger, UiDropdownContent, UiDropdownItem } from '../../components/dropdown';
+import { UiDropdown } from '../../components/dropdown/ui-dropdown';
+import { UiDropdownTrigger } from '../../components/dropdown/ui-dropdown-trigger';
+import { UiDropdownContent } from '../../components/dropdown/ui-dropdown-content';
+import { UiDropdownItem } from '../../components/dropdown/ui-dropdown-item';
 import { UiButton } from '../../components/button/ui-button';
 ---
 
@@ -14,16 +17,38 @@ import { UiButton } from '../../components/button/ui-button';
         </div>
 
         <section class="space-y-4">
-            <div class="p-6 border rounded-lg bg-card flex justify-center py-24">
-              <UiDropdown client:only='lit' client:only="lit">
-                <UiDropdownTrigger client:only='lit' asChild>
-                  <UiButton client:only='lit' variant="outline" client:only="lit">Open Menu</UiButton>
+            <div class="p-6 border rounded-lg bg-card flex justify-center py-24 bg-gradient-to-br from-card to-muted/50">
+              <UiDropdown client:only='lit'>
+                <UiDropdownTrigger client:only='lit' asChild slot="trigger">
+                  <UiButton client:only='lit' variant="default" class="shadow-lg">
+                    <span>Actions</span>
+                    <i class="fas fa-chevron-down ml-2"></i> <!-- Placeholder for icon if needed, or stick to text -->
+                  </UiButton>
                 </UiDropdownTrigger>
-                <UiDropdownContent client:only='lit' align="end">
-                  <UiDropdownItem client:only='lit'>Profile</UiDropdownItem>
-                  <UiDropdownItem client:only='lit'>Billing</UiDropdownItem>
-                  <UiDropdownItem client:only='lit'>Team</UiDropdownItem>
-                  <UiDropdownItem client:only='lit'>Subscription</UiDropdownItem>
+                <UiDropdownContent client:only='lit' align="end" class="w-56">
+                  <div class="px-2 py-1.5 text-sm font-semibold text-muted-foreground">My Account</div>
+                  <div class="h-px bg-border my-1"></div>
+                  <UiDropdownItem client:only='lit'>
+                    <div class="flex items-center gap-2">
+                       <span>Profile</span>
+                    </div>
+                  </UiDropdownItem>
+                  <UiDropdownItem client:only='lit'>
+                    <div class="flex items-center gap-2">
+                      <span>Billing</span>
+                    </div>
+                  </UiDropdownItem>
+                  <UiDropdownItem client:only='lit'>
+                    <div class="flex items-center gap-2">
+                      <span>Settings</span>
+                    </div>
+                  </UiDropdownItem>
+                  <div class="h-px bg-border my-1"></div>
+                  <UiDropdownItem client:only='lit'>
+                    <div class="flex items-center gap-2 text-destructive">
+                      <span>Log out</span>
+                    </div>
+                  </UiDropdownItem>
                 </UiDropdownContent>
               </UiDropdown>
             </div>
