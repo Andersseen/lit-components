@@ -10,12 +10,16 @@ export class UiSidebarHeader extends LitElement {
     unsafeCSS(tailwindStyles),
     css`
       /* Oculta texto dentro del header si colapsa */
-      ::slotted(span),
-      ::slotted(div.hide-on-collapse) {
-        opacity: var(--sidebar-text-opacity, 1);
-        width: var(--sidebar-text-width, auto);
-        overflow: hidden;
-        transition: opacity 0.2s;
+      /* Note: content inside slotted span or div */
+
+      :host-context([collapsed]) ::slotted(span) {
+        display: none;
+      }
+
+      :host-context([collapsed]) {
+        justify-content: center;
+        padding-left: 0;
+        padding-right: 0;
       }
     `,
   ];

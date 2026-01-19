@@ -12,8 +12,9 @@ export class UiSidebarTrigger extends LitElement {
 
   private _handleClick() {
     this.dispatchEvent(
-      new CustomEvent("uib-sidebar-toggle", { bubbles: true, composed: true })
+      new CustomEvent("uib-sidebar-toggle", { bubbles: true, composed: true }),
     );
+    // Find sidebar in the same tree
     const sidebar = document.querySelector("ui-sidebar") as UiSidebar | null;
     if (sidebar) sidebar.toggle();
   }

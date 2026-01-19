@@ -3,6 +3,7 @@ import { customElement, property } from "lit/decorators.js";
 import { cn } from "../../utils";
 import tailwindStyles from "./sidebar.css?inline";
 import { sidebarMenuButtonVariants } from "./sidebar.variants";
+import "../icon/ui-icon";
 
 @customElement("ui-sidebar-menu-button")
 export class UiSidebarMenuButton extends LitElement {
@@ -23,24 +24,18 @@ export class UiSidebarMenuButton extends LitElement {
       }
 
       /* 3. Texto (SPAN) animado */
-      ::slotted(span) {
-        opacity: var(--sidebar-text-opacity, 1);
-        width: var(--sidebar-text-width, auto);
-        overflow: hidden;
-        white-space: nowrap;
-        transition: opacity 0.2s, width 0.2s;
-        margin-left: 0.5rem; /* Gap normal */
-      }
-
       /* Si colapsamos, quitamos el margen del texto para centrar bien el icono */
-      :host-context([collapsed]) ::slotted(span) {
+      :host-context([collapsed]) span {
+        width: 0;
+        opacity: 0;
         margin-left: 0;
       }
     `,
   ];
 
   @property({ type: Boolean, reflect: true }) isActive = false;
-  @property() href = "#";
+  @property({ type: String }) href = "#";
+  @property({ type: String }) icon = "";
 
   render() {
     return html`
@@ -48,7 +43,17 @@ export class UiSidebarMenuButton extends LitElement {
         href="${this.href}"
         class="${cn(sidebarMenuButtonVariants({ isActive: this.isActive }))}"
       >
-        <slot></slot>
+        ${this.icon
+          ? html`<ui-icon
+              name="${this.icon}"
+              class="h-4 w-4 shrink-0"
+            ></ui-icon>`
+          : html`<slot name="icon"></slot>`}
+        <span
+          class="ml-2 whitespace-nowrap overflow-hidden transition-all duration-200"
+        >
+          <slot></slot>
+        </span>
       </a>
     `;
   }

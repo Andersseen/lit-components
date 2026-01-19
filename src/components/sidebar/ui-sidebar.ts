@@ -10,35 +10,31 @@ export class UiSidebar extends LitElement {
 
   @property({ type: Boolean, reflect: true }) collapsed = false;
 
+  connectedCallback() {
+    super.connectedCallback();
+    const saved = localStorage.getItem("sidebar-collapsed");
+    // If explicitly 'true', set to true. Boolean coercion of string "false" is true, so be careful.
+    if (saved === "true") {
+      this.collapsed = true;
+    }
+  }
+
   toggle() {
     this.collapsed = !this.collapsed;
+    localStorage.setItem("sidebar-collapsed", String(this.collapsed));
     this.dispatchEvent(
       new CustomEvent("uib-sidebar-change", {
         detail: { collapsed: this.collapsed },
         bubbles: true,
         composed: true,
-      })
+      }),
     );
   }
 
   render() {
-    // Variables CSS que controlan a los hijos reactivamente
-    const styleVars = `
-      --sidebar-width: ${this.collapsed ? "3rem" : "16rem"}; 
-      --sidebar-text-opacity: ${this.collapsed ? "0" : "1"};
-      --sidebar-text-width: ${this.collapsed ? "0px" : "auto"};
-      --sidebar-item-justify: ${this.collapsed ? "center" : "flex-start"};
-      --sidebar-item-padding: ${this.collapsed ? "0.5rem" : "0.5rem 0.75rem"};
-      --sidebar-group-label-display: ${this.collapsed ? "none" : "block"};
-    `;
-
     return html`
       <div
-        style="${styleVars}"
-        class="${cn(
-          sidebarVariants(),
-          "w-[var(--sidebar-width)]" // Ancho dinámico
-        )}"
+        class="${cn(sidebarVariants())}"
         data-state="${this.collapsed ? "collapsed" : "expanded"}"
       >
         <slot></slot>

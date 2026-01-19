@@ -66,6 +66,7 @@ export class UiTooltip extends LitElement {
         @focusin=${this.handleMouseEnter}
         @focusout=${this.handleMouseLeave}
       >
+        <slot name="trigger"></slot>
         <slot @slotchange=${this.handleSlotChange}></slot>
       </div>
     `;
