@@ -22,7 +22,7 @@ import { UiButton } from '../../components/button/ui-button';
               <UiButton client:only='lit'
                 variant="outline"
                 id="toast-trigger-default"
-                client:only="lit"
+
               >
                 Add to Calendar
               </UiButton>
@@ -30,7 +30,7 @@ import { UiButton } from '../../components/button/ui-button';
               <UiButton client:only='lit'
                   variant="destructive"
                   id="toast-trigger-destructive"
-                  client:only="lit"
+
               >
                   Destructive
               </UiButton>
@@ -38,7 +38,7 @@ import { UiButton } from '../../components/button/ui-button';
           </section>
     </div>
     
-    <UiToaster client:only='lit' client:only="lit" />
+    <UiToaster client:only='lit' />
 
     <script>
         import { toast } from '../../components/toast';

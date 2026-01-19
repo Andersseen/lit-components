@@ -32,6 +32,12 @@ export const buttonVariants = cva(
           errorColor.active,
           errorColor.border,
         ],
+        destructive: [
+          errorColor.base,
+          errorColor.hover,
+          errorColor.active,
+          errorColor.border,
+        ],
         warning: [
           warningColor.base,
           warningColor.hover,
@@ -66,7 +72,7 @@ export const buttonVariants = cva(
       variant: "primary",
       size: "md",
     },
-  }
+  },
 );
 
 export type ButtonVariants = VariantProps<typeof buttonVariants>;

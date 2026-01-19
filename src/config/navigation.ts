@@ -1,0 +1,21 @@
+export const sidebarConfig = {
+  items: [
+    { label: "Accordion", href: "/components/accordion" },
+    { label: "Alert", href: "/components/alert" },
+    { label: "Badge", href: "/components/badge" },
+    { label: "Breadcrumb", href: "/components/breadcrumb" },
+    { label: "Buttons", href: "/components/buttons" },
+    { label: "Cards", href: "/components/cards" },
+    { label: "Carousel", href: "/components/carousel" },
+    { label: "Drawer", href: "/components/drawer" },
+    { label: "Dropdown", href: "/components/dropdown" },
+    { label: "Menu", href: "/components/menu" },
+    { label: "Modal", href: "/components/modal" },
+    { label: "Pagination", href: "/components/pagination" },
+    { label: "Switch", href: "/components/switch" },
+    { label: "Tabs", href: "/components/tabs" },
+    { label: "Toast", href: "/components/toast" },
+    { label: "Toggle", href: "/components/toggle" },
+    { label: "Tooltip", href: "/components/tooltip" },
+  ],
+};

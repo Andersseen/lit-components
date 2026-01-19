@@ -15,8 +15,8 @@ import { UiButton } from '../../components/button/ui-button';
 
         <section class="space-y-4">
             <div class="p-6 border rounded-lg bg-card flex justify-center">
-              <UiModal client:only='lit' client:only="lit">
-                <UiButton client:only='lit' slot="trigger" variant="outline" client:only="lit">Edit Profile</UiButton>
+              <UiModal client:only='lit'>
+                <UiButton client:only='lit' slot="trigger" variant="outline">Edit Profile</UiButton>
                 <UiModalHeader client:only='lit'>
                   <UiModalTitle client:only='lit'>Edit Profile</UiModalTitle>
                   <UiModalDescription client:only='lit'>
@@ -30,7 +30,7 @@ import { UiButton } from '../../components/button/ui-button';
                   </div>
                 </div>
                 <UiModalFooter client:only='lit'>
-                  <UiButton client:only='lit' type="submit" client:only="lit">Save changes</UiButton>
+                  <UiButton client:only='lit' type="submit">Save changes</UiButton>
                 </UiModalFooter>
               </UiModal>
             </div>
